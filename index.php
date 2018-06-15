@@ -13,18 +13,20 @@
 
 <body>
 
-<nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
+<nav class="blue darken-2" role="navigation">
+    <div class="nav-wrapper container-fluid">
+      <a href="index.php" class="brand-logo" id="logo">Sistema Ventas</a>
+      
+      <ul class="right hide-on-med-and-down" id="barra">
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
       </ul>
+
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
+
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
@@ -78,7 +80,7 @@
     <br><br>
   </div>
 
-  <footer class="page-footer orange">
+  <footer class="page-footer blue darken-2">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -109,7 +111,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      <p class="orange-text text-lighten-3">Made by Andrei</p>
       </div>
     </div>
   </footer>
