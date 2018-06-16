@@ -4,18 +4,17 @@ $(document).ready(function() {
   //barra
   mostrarBotonesNavbar();
 
-  //login register
+  //login y register
   $('.modal').modal(); //codigo materialize modal
   $('select').material_select(); //codigo materialize form
 
   $modalLogin = $('#modal1'); //modal del login
   $modalRegister = $('#modal2'); //modal del register
 
-  $(document).on('click', '[data-login]', showLogin); //mostrar modal de login mejorado
-  //$('#btn-login').on('click', showLogin); //mostrar modal de login
+  $(document).on('click', '[data-login]', showLogin); //mostrar modal de login 
+  $(document).on('click', '[data-register]', showRegister); //mostrar modal de registro 
+
   $('#login').on('click', loginUser); // valida login
-  $(document).on('click', '[data-register]', showLogin); //mostrar modal de registro mejorado
-  //    $('#btn-register').on('click', showRegister); //mostral modal de registro
   $('#register').on('click', registerUser); //valida registro
 
 });
@@ -44,31 +43,14 @@ function showLogin() {
   Materialize.updateTextFields();
 }
 
-//validar register
-function registerUser() {
-  event.preventDefault();
-  var url = 'php/registrarUsuario.php';
-  var data = $("#formRegister").serializeArray();
-  $.ajax({
-      url: url,
-      data: data,
-      method: 'POST'
-    })
-    .done(function(response) {
-      console.log(response);
-      if (response.error) {
-        console.log(response.message);
-        Materialize.toast(response.message, 4000)
-      } else {
-        Materialize.toast(response.message, 4000)
-        location.reload();
-
-      }
-
-    });
+//mostrar register
+function showRegister() {
+  $modalRegister.modal('open');
+  Materialize.updateTextFields();
 }
 
-//valida login
+/////////////////////////////////////////validadores
+
 function loginUser() {
   event.preventDefault();
   var url = 'php/validarUsuario.php';
@@ -94,8 +76,26 @@ function loginUser() {
     });
 }
 
-//mostrar register
-function showRegister() {
-  $modalRegister.modal('open');
-  Materialize.updateTextFields();
+//validar register
+function registerUser() {
+  event.preventDefault();
+  var url = 'php/registrarUsuario.php';
+  var data = $("#formRegister").serializeArray();
+  $.ajax({
+      url: url,
+      data: data,
+      method: 'POST'
+    })
+    .done(function(response) {
+      console.log(response);
+      if (response.error) {
+        console.log(response.message);
+        Materialize.toast(response.message, 4000)
+      } else {
+        Materialize.toast(response.message, 4000)
+        location.reload();
+
+      }
+
+    });
 }

@@ -30,27 +30,19 @@
 		return;
 	} else {
 		if ($fila = mysqli_fetch_array($res)) {
-			/*if ($pass == $fila['usu_password']) {*/
-				// Creamos sesión
-	            session_start();  
 
+	            session_start();  
 	            // Almacenamos el nombre de usuario en una variable de sesión usuario
 	            $_SESSION['id'] = $fila["usu_id"];
-	            $_SESSION['role'] = $fila["usu_role"];
 	            $_SESSION['name'] = $fila["usu_name"];
+	            $_SESSION['role'] = $fila["usu_role"];
 	            $_SESSION['usuario'] = $fila["usu_usuario"];
 	            $_SESSION['password'] = $fila["usu_password"];
-				echo json_encode(['error' => false, 'message' => 
-					'Bienvenido al sistema. Redireccionando...', 'role' => $fila["usu_role"] ]);
+				echo json_encode(['error' => false,
+								 'message' => 'Bienvenido al sistema. Redireccionando...',
+								 'role' => $fila["usu_role"] ]);
 	            return;
-			/*} else {
-				echo json_encode(['error' => true, 'message' => 'Contraseña incorrecta.']);
-				return;
-			}*/
 		}
 	}
-
-
-
 
  ?>
