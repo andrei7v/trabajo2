@@ -12,12 +12,12 @@
 </head>
 
 <body>
-
 <nav class="blue darken-2" role="navigation">
     <div class="nav-wrapper container-fluid">
       <a href="index.php" class="brand-logo" id="logo">Sistema Ventas</a>
       
       <ul class="right hide-on-med-and-down" id="barra">
+  
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -117,7 +117,66 @@
   </footer>
 
 
+  <!--  Modales-->
+  <div id="modal1" class="modal">
+      <form id="formLogin" class="col s12">
+          <div class="modal-content">
+              <h4>Iniciar Sesión</h4>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="user" name="user" type="text" class="validate">
+                  <label for="user">Ingrese usuario</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="password" name="password" type="password" class="validate">
+                  <label for="password">Ingrese contraseña</label>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <a id="login" data-url="panel.php" class="modal-action waves-effect waves-green btn-flat">Ingresar</a>
+              <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+          </div>
+      </form>
+  </div>
 
+  <div id="modal2" class="modal">
+      <form id="formRegister" class="col s12">
+          <div class="modal-content">
+              <h4>Registro de usuario</h4>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="name" name="name" type="text" class="validate">
+                  <label for="name">Ingrese nombre</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="user" name="user" type="text" class="validate">
+                  <label for="user">Ingrese usuario</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="password" name="password" type="password" class="validate">
+                  <label for="password">Ingrese contraseña</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="pass" name="pass" type="password" class="validate">
+                  <label for="pass">Repetir contraseña</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="telefono" name="telefono" type="text" class="validate">
+                  <label for="telefono">Ingrese teléfono</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="direccion" name="direccion" type="text" class="validate">
+                  <label for="direccion">Ingrese dirección</label>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <a id="register" class="modal-action waves-effect waves-green btn-flat">Registrar</a>
+              <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+          </div>
+      </form>
+  </div>
 
 
 

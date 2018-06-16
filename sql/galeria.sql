@@ -4,8 +4,8 @@ create database proyecto;
 
 create table usuario (
 	usu_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	usu_role int,
 	usu_name varchar(80),
+	usu_role int,
 	usu_usuario varchar(80),
 	usu_password varchar(50),
 	usu_telefono varchar(50),
@@ -36,16 +36,14 @@ create table producto (
 	prod_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	prod_nombre varchar(80),
 	prod_descripcion text,
+	prod_unidad text,
 	prod_precio int,
-	prod_stock int,
-	prod_categoria int NOT NULL,
-	prod_subcategoria int NOT NULL,
+	prod_stock int NOT NULL,
 	prod_marca int NOT NULL,
 	prod_imagen varchar(100) DEFAULT NULL,
 	prod_url varchar(100) DEFAULT NULL,
 	prod_estado boolean,
 	FOREIGN KEY (prod_categoria) REFERENCES categoria(cat_id),
-	FOREIGN KEY (prod_subcategoria) REFERENCES subcategoria(scat_id),
 	FOREIGN KEY (prod_marca) REFERENCES marca(mrk_id)
 );
 ALTER TABLE prodicula ENGINE=INNODB;
