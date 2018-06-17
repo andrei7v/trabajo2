@@ -62,9 +62,7 @@ function loginUser() {
       method: 'POST'
     })
     .done(function(response) {
-      console.log(response);
       if (response.error) {
-        console.log(response.message);
         Materialize.toast(response.message, 4000)
       } else {
         Materialize.toast(response.message, 4000),
@@ -86,13 +84,12 @@ function registerUser() {
       method: 'POST'
     })
     .done(function(response) {
-      console.log(response);
       if (response.error) {
-        console.log(response.message);
         Materialize.toast(response.message, 4000)
       } else {
         Materialize.toast(response.message, 4000)
-        location.reload();
+        $modalRegister.modal('close'),
+          mostrarBotonesNavbar(response.role);
 
       }
 

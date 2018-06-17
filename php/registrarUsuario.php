@@ -2,8 +2,8 @@
 	header('content-type: application/json');
 	include 'conexion.php';
 
-	$usuario = $_POST['user'];
 	$name = $_POST['name'];
+	$usuario = $_POST['user'];
 	$password = $_POST['password'];
 	$repeatPass = $_POST['pass'];
 	$telefono = $_POST['telefono'];
@@ -50,12 +50,14 @@
 		return;
 	}
 
-	$query = "INSERT INTO usuario(usu_usuario, usu_role, usu_name, usu_password, usu_telefono, usu_direccion) 
-				VALUES('$usuario', 1, '$name', '".md5($password)."', '$telefono','$direccion')";
+	$query = "INSERT INTO usuario(usu_name, usu_role, usu_usuario, usu_password, usu_telefono, usu_direccion, usu_estado) 
+			 VALUES('$name', 1, '$usuario', '".md5($password)."', '$telefono','$direccion', 1)";
 	$result = mysqli_query($conn, $query);
 
 	if ($result) {
-		echo json_encode(['error'=>false, 'message'=>'Usuario registrado correctamente']);
+		echo json_encode(['error'=>false,
+						'message'=>'Usuario registrado correctamente',
+						'role' => $password ]);
 		return;
 	}
 ?>
