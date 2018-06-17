@@ -148,16 +148,16 @@
               <h4>Registro de usuario</h4>
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="name" name="name" type="text" class="validate">
-                  <label for="name">Ingrese nombre</label>
+                  <input id="user" name="user" type="text" class="validate">
+                  <label for="user">Usuario</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="user" name="user" type="text" class="validate">
-                  <label for="user">Ingrese usuario</label>
+                  <input id="name" name="name" type="text" class="validate">
+                  <label for="name">Nombre y apellidos </label>
                 </div>
                 <div class="input-field col s6">
                   <input id="password" name="password" type="password" class="validate">
-                  <label for="password">Ingrese contraseña</label>
+                  <label for="password">Contraseña</label>
                 </div>
                 <div class="input-field col s6">
                   <input id="pass" name="pass" type="password" class="validate">
@@ -165,11 +165,11 @@
                 </div>
                 <div class="input-field col s6">
                   <input id="telefono" name="telefono" type="text" class="validate">
-                  <label for="telefono">Ingrese teléfono</label>
+                  <label for="telefono">Teléfono</label>
                 </div>
                 <div class="input-field col s6">
                   <input id="direccion" name="direccion" type="text" class="validate">
-                  <label for="direccion">Ingrese dirección</label>
+                  <label for="direccion">Dirección</label>
                 </div>
               </div>
           </div>

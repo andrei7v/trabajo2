@@ -39,7 +39,7 @@
 	            $_SESSION['usuario'] = $fila["usu_usuario"];
 	            $_SESSION['password'] = $fila["usu_password"];
 				echo json_encode(['error' => false,
-								 'message' => 'Bienvenido al sistema '.$_SESSION['usuario'],
+								 'message' => 'Bienvenido al sistema '.$_SESSION['name'],
 								 'role' => $fila["usu_role"] ]);
 	            return;
 		}
