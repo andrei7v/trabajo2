@@ -1,0 +1,9 @@
+tr td {
+  max-width: 300px;
+  white-space: normal;
+}
+
+#div-botones a,
+#table-productos a {
+  margin-bottom: 0.5rem;
+}

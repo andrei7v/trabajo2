@@ -39,11 +39,10 @@ ALTER TABLE categoria ENGINE=INNODB;
 create table producto (
 	prod_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	prod_nombre varchar(80),
+	prod_marca int NOT NULL,
 	prod_descripcion text,
-	prod_unidad text,
 	prod_precio int,
 	prod_stock int NOT NULL,
-	prod_marca int NOT NULL,
 	FOREIGN KEY (prod_marca) REFERENCES marca(mar_id),
 	prod_imagen varchar(100) DEFAULT NULL,
 	prod_url varchar(100) DEFAULT NULL,
@@ -126,3 +125,10 @@ VALUES ("Advance", 1),
 ("LG", 9),
 ("AOC", 9),
 ("Micronics", 9);
+
+
+INSERT INTO producto(prod_nombre, prod_marca, prod_descripcion, prod_precio, prod_stock, prod_imagen, prod_url, prod_estado)
+VALUES ("Minicomponente CM5760 1100 W", 31,
+		 "Duplica la fiesta para más diversión. Conecta 2 sistemas de forma inalámbrica para disfrutar el doble de potencia del doble de parlantes",
+		 549, 1,'imagen1.png','http://www.sodimac.com.pe/sodimac-pe/product/2623005/Minicomponente-CM5760-1100-W/2623005',1);
+

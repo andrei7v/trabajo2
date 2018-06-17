@@ -7,23 +7,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/materialize.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/navbar.css">
   <title>Inicio | Proyecto</title>
 </head>
 
 <body>
-<nav class="blue darken-2" role="navigation">
+  <nav class="blue darken-2" role="navigation">
     <div class="nav-wrapper container-fluid">
-    
-      <a href="index.php" class="brand-logo" id="logo">Sistema Ventas</a>
-      
-      
-      <ul class="right hide-on-med-and-down" id="barra">
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-      </ul>
-
+      <a href="index.php" class="brand-logo" id="logo">Sistema Ventas</a>    
+      <ul class="right hide-on-med-and-down" id="barra"></ul>
+      <ul id="nav-mobile" class="side-nav"></ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
@@ -32,15 +25,10 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Starter Template</h1>
+      <h1 class="header center orange-text">Productos</h1>
       <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+        <h5 class="header col s12 light">Compra online. Encuentra lo último en laptops, televisores, electrodomésticos y más. </h5>
       </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div>
-      <br><br>
-
     </div>
   </div>
 
@@ -180,14 +168,10 @@
       </form>
   </div>
 
-
-
-
-
   <script src="js/jquery-3.2.1.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/btnnavbar.js"></script>
-  <script src="js/codigo.js"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
