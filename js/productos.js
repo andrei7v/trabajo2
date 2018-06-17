@@ -36,6 +36,13 @@ function obtenerProductos() {
   //   $("#div-card").html("");                   no usado solo para cards
   $("#div-botones").html("");
   $.getJSON("php/obtenerProductos.php", function(response) {
+    if (!response.permiso == 1) {
+
+    } else {
+
+    }
+
+
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
     } else {
