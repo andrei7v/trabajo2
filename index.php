@@ -14,10 +14,11 @@
 <body>
 <nav class="blue darken-2" role="navigation">
     <div class="nav-wrapper container-fluid">
+    
       <a href="index.php" class="brand-logo" id="logo">Sistema Ventas</a>
       
+      
       <ul class="right hide-on-med-and-down" id="barra">
-  
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -26,6 +27,7 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
+  
 
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
@@ -184,6 +186,7 @@
 
   <script src="js/jquery-3.2.1.js"></script>
   <script src="js/materialize.js"></script>
+  <script src="js/btnnavbar.js"></script>
   <script src="js/codigo.js"></script>
 </body>
 
