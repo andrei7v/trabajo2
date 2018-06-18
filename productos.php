@@ -59,7 +59,7 @@
                     <a data-download class="waves-effect waves-light btn"> 
                         <i class="large material-icons">cloud_download</i>
                     </a>
-                    <a data-delete class="waves-effect waves-light btn"> 
+                    <a data-delete data-nombred class="waves-effect waves-light btn"> 
                         <i class="large material-icons">delete</i>
                     </a>
                 </td>
@@ -200,58 +200,29 @@
 
 
 
-<!-- modal editar -->
-  <div id="modal3" class="modal modal-fixed-footer">
-    <form id="formEdit" class="col s12" enctype="multipart/form-data">
+<!-- Modal eliminar producto okkk-->
+  <div id="modalEliminar" class="modal modal-fixed-footer">
+    <form class="col s12" id="formEliminar">
       <div class="modal-content">
-        <h4>Editar película</h4>
+        <h4>Eliminar producto</h4>
         <div class="row">
-          <input type="hidden" name="idE" id="idE" value="">
-          <div class="input-field col s6">
-            <input id="nameE" name="nameE" type="text" class="validate">
-            <label for="nameE">Ingrese nombre</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="duracionE" name="duracionE" type="text" class="validate">
-            <label for="duracionE">Ingrese duracion (min)</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="descripcionE" name="descripcionE" type="text" class="validate">
-            <label for="descripcionE">Ingrese descripcion</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="anioE" name="anioE" type="text" class="validate">
-            <label for="anioE">Ingrese año estreno</label>
-          </div>
-          <div class="input-field col s6">
-            <select id="categoriasE" name="categoriasE">
-                            <option value="" disabled selected>Escoja la categoría</option>
-                            
-                          </select>
-            <label>Categorias</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="urlE" name="urlE" type="text" class="validate">
-            <label for="urlE">Ingrese url</label>
-          </div>
-          <div class="file-field input-field col s6">
-            <div class="btn">
-              <span>Imagen</span>
-              <input type="file" id="image-filmE" name="image-filmE">
+            <input type="hidden" name="idD" value="idD" value="">
+            <div class="input-field col s12">
+              <input id="nombreD" name="nombreD" type="text">
+              <label for="nombreD">Desea eliminar este producto?</label>
             </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" id="imageE" type="text">
-            </div>
-            <img class="responsive-img" id="preview-imagenE" src="#" alt="Preview imagen">
-          </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" id="btn-edit" class="modal-action waves-effect waves-green btn-flat">Guardar</button>
+        <button type="submit" id="btn-eliminar" class="modal-action waves-effect waves-green btn-flat">Eliminar</button>
         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
       </div>
     </form>
   </div>
+
+
+
+
 
   <!-- Modal Structure -->
   <div id="modalImage" class="modal modal-fixed-footer">

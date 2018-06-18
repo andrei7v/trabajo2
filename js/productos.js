@@ -1,6 +1,7 @@
 // Normalmente se inicia con esta sentencia
 $(document).ready(function() {
   // Cuerpo principal
+  $('.modal').modal();
 
   permisos();
   obtenerCategoriasF();
@@ -21,7 +22,10 @@ $(document).ready(function() {
     readURL(this);
   });
 
-
+  $modalEliminar = $("#modalEliminar"); //ok
+  $(document).on('click', '[data-delete]', mostrarModalEliminar);
+  $formEliminar = $("#formRegister");
+  //$formEliminar.on("submit", eliminarProducto);
 });
 
 
@@ -47,6 +51,7 @@ function registrarProducto(event) {
     });
 }
 
+var $modalEliminar;
 
 
 
@@ -192,8 +197,17 @@ function mostrarModalRegistrar() {
 }
 
 
+function mostrarModalEliminar() {
+  var id = $(this).data("delete");
+  $.getJSON('php/getProductoById.php?id=' + id, function(response) {
+    var nombre = response[0][0];
+    $modalEliminar.find('[id=nombreD]').val(nombre);
+    $('select').material_select();
+    Materialize.updateTextFields();
+  });
+  $modalEliminar.modal('open');
 
-
+}
 
 
 
@@ -214,6 +228,7 @@ function renderTemplateProductos(id, nombre, marca, descripcion, precio, stock, 
 
   clone.querySelector("[data-idproducto]").innerHTML = id;
   clone.querySelector("[data-nombre]").innerHTML = nombre;
+  clone.querySelector("[data-nombred]").setAttribute("data-nombred", nombre);
   clone.querySelector("[data-marca]").innerHTML = marca;
   clone.querySelector("[data-descripcion]").innerHTML = descripcion + "...";
   clone.querySelector("[data-precio]").innerHTML = precio;
