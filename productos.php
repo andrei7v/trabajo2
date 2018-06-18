@@ -27,7 +27,8 @@
   <div class="row">
     <div class="col s11 offset-s1">
       <br>
-      <a id="btn-registrar" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Registrar pelicula"><i class="material-icons">add</i></a>
+      <!-- btn registrar -->
+      <a id="btn-registrar" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Registrar producto"><i class="material-icons">add</i></a>
       <a href="php/exportarPDF.php" target="_blank" class="btn-floating btn-large waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="Exportar PDF"><i class="material-icons">picture_as_pdf</i></a>
       <br><br>
       <a id="todos" class="waves-effect waves-light btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Mostrar todos"><i class="material-icons right">cloud</i>Todos</a>
@@ -106,8 +107,8 @@
             <th>Descripción</th>
             <th>Precio</th>
             <th>Stock</th>
-            <th>Categoria</th>
             <th>SubCategoria</th>
+            <th>Categoria</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -119,67 +120,87 @@
     </div>
   </div>
 
-  <!-- Modal Structure modificar-->
+  <!-- Modal registrar nuevo producto-->
   <div id="modalRegister" class="modal modal-fixed-footer">
     <form class="col s12" id="formRegister" enctype="multipart/form-data">
       <div class="modal-content">
-        <h4>Registrar película</h4>
+        <h4>Registrar producto</h4>
 
         <div class="row">
           <div class="input-field col s6">
             <input id="nombre" name="nombre" type="text" class="validate">
-            <label for="nombre">Nombre de la película</label>
+            <label for="nombre">Nombre de la producto</label>
           </div>
           <div class="input-field col s6">
-            <input id="duracion" name="duracion" type="text" class="validate">
-            <label for="duracion">Duración</label>
+            <input id="precio" name="precio" type="text" class="validate">
+            <label for="precio">Precio</label>
           </div>
         </div>
+
         <div class="row">
           <div class="input-field col s12">
             <textarea id="descripcion" name="descripcion" class="materialize-textarea"></textarea>
             <label for="descripcion">Descripción</label>
           </div>
         </div>
+
         <div class="row">
           <div class="input-field col s6">
-            <input id="year" name="year" type="text" class="validate">
-            <label for="year">Año de estreno</label>
+            <select id="cboCategorias" name="cboCategorias">
+                <option value="0">Seleccione una Categoria</option>     
+            </select>
+            <label>Categoria</label>
           </div>
           <div class="input-field col s6">
-            <select id="cboCategorias" name="cboCategorias">
-                              
-                            </select>
-            <label>Categorías</label>
+            <select id="cboSubCategorias" name="cboSubCategorias" disabled>
+                          <option value="0">Seleccione Subcategoria</option>      
+            </select>
+            <label>Subcategoría</label>
+          </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+              <select id="cboMarcas" name="cboMarcas" disabled>
+                            <option value="0">Seleccione Marca</option>      
+              </select>
+              <label>Marca</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="stock" name="stock" type="text" class="validate">
+            <label for="stock">Stock</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
             <input id="url" name="url" type="text" class="validate">
-            <label for="url">Url de la pelicula</label>
+            <label for="url">Url del producto</label>
           </div>
           <div class="input-field col s6">
-            <div class="file-field input-field">
-              <div class="btn">
-                <span>Imagen</span>
-                <input type="file" id="imagen" name="imagen">
+              <div class="file-field input-field">
+                  <div class="btn">
+                      <span>Imagen</span>
+                      <input type="file" id="imagen" name="imagen">
+                  </div>
+                  <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text">
+                  </div>
+                  <img style="display: none" class="responsive-img" id="preview-image" src="#" alt="Preview Imagen">
               </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
-              </div>
-              <img style="display: none" class="responsive-img" id="preview-image" src="#" alt="Preview Imagen">
-            </div>
           </div>
-
+          
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancelar</a>
         <button type="submit" class="waves-effect waves-green btn-flat ">Guardar</button>
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancelar</a>
       </div>
     </form>
   </div>
 
+
+
+
+<!-- modal editar -->
   <div id="modal3" class="modal modal-fixed-footer">
     <form id="formEdit" class="col s12" enctype="multipart/form-data">
       <div class="modal-content">

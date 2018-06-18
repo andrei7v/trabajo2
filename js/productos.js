@@ -1,19 +1,146 @@
 // Normalmente se inicia con esta sentencia
 $(document).ready(function() {
   // Cuerpo principal
-  obtenerProductos();
-  $(document).on('click', '[data-button]', obtenerPeliculasPorCategoria); //mostrar producto al pulsar botones
+
+  permisos();
+  obtenerCategoriasF();
+  $(document).on('click', '[data-button]', obtenerProductosPorSubCategoria); //mostrar producto al pulsar botones
   $("#todos").on('click', obtenerProductos); //mostrar todas las peliculas
+
+  $formRegister = $("#formRegister");
+  $formRegister.on("submit", registrarProducto);
+
+  $modalRegister = $("#modalRegister"); //modal register
+  $("#btn-registrar").on("click", mostrarModalRegistrar); //mostrar modal registrar
+
+  $('#cboCategorias').change(obtenerSubCategoriasF);
+  $('#cboSubCategorias').change(obtenerMarcasF);
+
+  $("#imagen").change(function() {
+    $("#preview-image").hide();
+    readURL(this);
+  });
+
 
 });
 
+
+function registrarProducto(event) {
+  event.preventDefault();
+  var url = "php/registrarProducto.php";
+  $.ajax({
+      url: url,
+      data: new FormData(this),
+      processData: false,
+      contentType: false,
+      method: "POST"
+    })
+    .done(function(response) {
+      if (response.error) {
+        Materialize.toast(response.message, 3000, 'rounded');
+      } else {
+        Materialize.toast(response.message, 3000, 'rounded');
+        $modalRegister.modal('close');
+        obtenerProductos();
+
+      };
+    });
+}
+
+
+
+
+
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var lectora = new FileReader();
+    lectora.onload = function(event) {
+      $("#preview-image").attr("src", event.target.result);
+    }
+    $("#preview-image").removeAttr("style");
+    lectora.readAsDataURL(input.files[0]);
+  }
+}
+
+
+var $modalRegister;
+var $formRegister;
+
+function permisos() {
+  $.getJSON("php/permisos.php", function(response) {
+    if (response.permisos == 2) {
+      obtenerProductos();
+    } else {
+      window.location = 'index.php';
+      return;
+    }
+  });
+}
+
+
+function obtenerCategoriasF() {
+  //obtener categorias para el select
+  $.getJSON("php/obtenerCategorias.php", function(response) {
+    if (response.error) {
+      Materialize.toast(response.message, 3000, 'rounded');
+    } else {
+      for (var i = 0; i < response.message.length; i++) {
+        $("#cboCategorias").append($("<option></option>").attr("value", response.message[i].idcategoria).text(response.message[i].nombre));
+        //$('#categoriasE').append($('<option></option>').attr('value', response.message[i].idcategoria).text(response.message[i].nombre));
+
+      };
+    };
+  });
+}
+
+function obtenerSubCategoriasF() {
+  $("#cboSubCategorias").empty();
+  var idCategoria = $("#cboCategorias").val();
+
+  //obtener subcategorias para el select
+  $.post("php/obtenerSubCategoriasF.php", { idCategoria: idCategoria }, function(response) {
+    if (response.error) {
+      Materialize.toast(response.message, 3000, 'rounded');
+    } else {
+      $('#cboSubCategorias').prop('disabled', false);
+      $("#cboSubCategorias").append('<option value="0">Seleccione Sub Categoria</option>');
+      $.each(response.message, function(id, value) {
+        $("#cboSubCategorias").append('<option value="' + id + '">' + value + '</option>');
+      });
+      $("#cboSubCategorias").material_select()
+    };
+  });
+}
+
+function obtenerMarcasF() {
+  $("#cboMarcas").empty();
+  var idSubCategoria = $("#cboSubCategorias").val();
+  //obtener marcas para el select
+  $.post("php/obtenerMarcasF.php", { idSubCategoria: idSubCategoria }, function(response) {
+    if (response.error) {
+      Materialize.toast(response.message, 3000, 'rounded');
+    } else {
+      $('#cboMarcas').prop('disabled', false);
+      $("#cboMarcas").append('<option value="0">Seleccione Marca</option>');
+      $.each(response.message, function(id, value) {
+        $("#cboMarcas").append('<option value="' + id + '">' + value + '</option>');
+      });
+      $("#cboMarcas").material_select()
+    };
+  });
+}
+
+
+
+
 //mostar producto al pulsar botones okokoko
-function obtenerPeliculasPorCategoria() {
+function obtenerProductosPorSubCategoria() {
   $("#table-productos").html("");
   ////$("#div-card").html("");                         no usado solo para cards
   var idSubCategoria = $(this).data("button");
   $.ajax({
-      url: "php/obtenerPeliculasPorSubCategoria.php",
+      url: "php/obtenerProductosPorSubCategoria.php",
       data: { idSubCategoria: idSubCategoria },
       method: "POST"
     })
@@ -29,20 +156,14 @@ function obtenerPeliculasPorCategoria() {
 }
 
 
-
 //al cargar la web cargar productos y botones okok
 function obtenerProductos() {
   $("#table-productos").html("");
   //   $("#div-card").html("");                   no usado solo para cards
   $("#div-botones").html("");
   $.getJSON("php/obtenerProductos.php", function(response) {
-    if (!response.permiso == 1) {
 
-    } else {
-
-    }
-
-
+    //template
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
     } else {
@@ -51,7 +172,7 @@ function obtenerProductos() {
       };
     };
   });
-  $.getJSON("php/obtenerCategorias.php", function(response) {
+  $.getJSON("php/obtenerSubCategorias.php", function(response) {
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
     } else {
@@ -61,6 +182,30 @@ function obtenerProductos() {
     };
   });
 }
+
+
+//////////////////////////registrar
+
+function mostrarModalRegistrar() {
+  $("select").material_select();
+  $modalRegister.modal('open');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // renderizar el template productos okok

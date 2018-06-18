@@ -129,6 +129,15 @@ VALUES ("Advance", 1),
 
 INSERT INTO producto(prod_nombre, prod_marca, prod_descripcion, prod_precio, prod_stock, prod_imagen, prod_url, prod_estado)
 VALUES ("Minicomponente CM5760 1100 W", 31,
-		 "Duplica la fiesta para más diversión. Conecta 2 sistemas de forma inalámbrica para disfrutar el doble de potencia del doble de parlantes",
-		 549, 1,'imagen1.png','http://www.sodimac.com.pe/sodimac-pe/product/2623005/Minicomponente-CM5760-1100-W/2623005',1);
+		"Duplica la fiesta para más diversión. Conecta 2 sistemas de forma inalámbrica para disfrutar el doble de potencia del doble de parlantes",
+		549, 1,'minicomponente.jpg',"http://www.sodimac.com.pe/sodimac-pe/product/2623005/Minicomponente-CM5760-1100-W/2623005",1),
+		("Televisor Smart LED Ultra HD 50'' UN50MU6103GXPE", 21,
+		"Experimenta un detalle vívido con 4 veces la resolución de la TV UHD. Todo lo que mires se verá mejor gracias al color realista y al brillo.",
+		1599, 1,'televisor1.jpg',"http://www.sodimac.com.pe/sodimac-pe/product/2672413/Televisor-Smart-LED-Ultra-HD-50'-UN50MU6103GXPE",1),
+		("NB ACER G3-572-72PM", 17,
+		"Intel Core i7 (7th Gen) i7-7700HQ Quad-core (4 Core) 2.80 GHz - 16 GB DDR4 SDRAM - 1 TB HDD - 256 GB SSD - Windows 10 Home 64-bit - 1920 x 1080 - Tecnología IPS de Variación en el Plano, Visión Confortable - Negro - NVIDIA GeForce GTX 1060 con 6 GB GDDR5 - Bluetooth - Español Teclado - Cámara Frontal/Cámara Web - IEEE 802.11ac - Gigabit Ethernet - Red (RJ-45) - HDMI - 1 x Puertos USB 3.",
+		5999, 1,'laptop1.jpg',"http://www.sodimac.com.pe/sodimac-pe/product/2672413/Televisor-Smart-LED-Ultra-HD-50''-UN50MU6103GXPE/2672413",1);
+
+
+
 
