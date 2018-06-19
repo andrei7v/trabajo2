@@ -257,6 +257,17 @@ function renderTemplateProductos(id, nombre, marca, descripcion, precio, stock, 
   clone.querySelector("[data-stock]").innerHTML = stock;
   clone.querySelector("[data-subcategoria]").innerHTML = subcategoria;
   clone.querySelector("[data-categoria]").innerHTML = categoria;
+  if (stock == 0) {
+    clone.querySelector("[data-idproducto]").setAttribute("class", "red-text");
+    clone.querySelector("[data-nombre]").setAttribute("class", "red-text");
+    clone.querySelector("[data-descripcion]").setAttribute("class", "red-text");
+    clone.querySelector("[data-marca]").setAttribute("class", "red-text");
+    clone.querySelector("[data-precio]").setAttribute("class", "red-text");
+    clone.querySelector("[data-stock]").setAttribute("class", "red-text");
+    clone.querySelector("[data-subcategoria]").setAttribute("class", "red-text");
+    clone.querySelector("[data-categoria]").setAttribute("class", "red-text");
+  }
+
   clone.querySelector("[data-edit]").setAttribute("data-edit", id);
   clone.querySelector("[data-delete]").setAttribute("data-delete", id);
   clone.querySelector("[data-download]").setAttribute("href", "php/descargarArchivo.php?imagen=" + imagen)
