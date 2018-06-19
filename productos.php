@@ -201,20 +201,19 @@
 
 
 <!-- Modal eliminar producto okkk-->
-  <div id="modalEliminar" class="modal modal-fixed-footer">
+  <div id="modalEliminar" class="modal">
     <form class="col s12" id="formEliminar">
       <div class="modal-content">
-        <h4>Eliminar producto</h4>
+        <h4>Esta seguro de eliminar este producto?</h4>
         <div class="row">
-            <input type="hidden" name="idD" value="idD" value="">
+            <input id="idD" name="idD" val="" hidden>
             <div class="input-field col s12">
-              <input id="nombreD" name="nombreD" type="text">
-              <label for="nombreD">Desea eliminar este producto?</label>
+              <p id="nombreD" name="nombreD" ></p>
             </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" id="btn-eliminar" class="modal-action waves-effect waves-green btn-flat">Eliminar</button>
+        <button type="submit" id="btn-eliminar" data-eliminar class="modal-action waves-effect waves-green btn-flat">Eliminar</button>
         <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
       </div>
     </form>

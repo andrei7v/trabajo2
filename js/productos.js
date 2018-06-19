@@ -24,8 +24,8 @@ $(document).ready(function() {
 
   $modalEliminar = $("#modalEliminar"); //ok
   $(document).on('click', '[data-delete]', mostrarModalEliminar);
-  $formEliminar = $("#formRegister");
-  //$formEliminar.on("submit", eliminarProducto);
+  $formEliminar = $("#formEliminar");
+  $formEliminar.on("submit", eliminarProducto);
 });
 
 
@@ -52,7 +52,7 @@ function registrarProducto(event) {
 }
 
 var $modalEliminar;
-
+var $formEliminar;
 
 
 
@@ -92,7 +92,7 @@ function obtenerCategoriasF() {
     } else {
       for (var i = 0; i < response.message.length; i++) {
         $("#cboCategorias").append($("<option></option>").attr("value", response.message[i].idcategoria).text(response.message[i].nombre));
-        //$('#categoriasE').append($('<option></option>').attr('value', response.message[i].idcategoria).text(response.message[i].nombre));
+
 
       };
     };
@@ -200,20 +200,42 @@ function mostrarModalRegistrar() {
 function mostrarModalEliminar() {
   var id = $(this).data("delete");
   $.getJSON('php/getProductoById.php?id=' + id, function(response) {
-    var nombre = response[0][0];
-    $modalEliminar.find('[id=nombreD]').val(nombre);
+    console.log(response);
+    var id = response[0][0];
+    var nombre = response[0][1];
+    $modalEliminar.find('[id=idD]').val(id);
+    $modalEliminar.find('[id=nombreD]').html(nombre);
     $('select').material_select();
     Materialize.updateTextFields();
   });
   $modalEliminar.modal('open');
-
 }
 
 
+function eliminarProducto(event) {
+  event.preventDefault();
+  var url = 'php/eliminarProducto.php';
+  data = $(this).serializeArray();
+  $.ajax({
+    url: url,
+    data: data,
+    method: 'POST'
+  })
+
+  .done(function(response) {
+    if (response.error) {
+      Materialize.toast(response.message, 3000, 'rounded');
+    } else {
+      Materialize.toast(response.message, 3000, 'rounded');
+      obtenerProductos();
+      $modalEliminar.modal('close');
+
+    };
 
 
+  });
 
-
+}
 
 
 
