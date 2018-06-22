@@ -65,6 +65,8 @@ var $modalEdit;
 
 function mostrarModalEditar() {
   var id = $(this).data('edit');
+  //obtenerSubCategoriasEdit();
+
   $.getJSON('php/getProductoById.php?id=' + id, function(response) {
     var id = response[0][0];
     var nombre = response[0][1];
@@ -74,15 +76,19 @@ function mostrarModalEditar() {
     var stock = response[0][5];
     var imagen = response[0][6];
     var url = response[0][7];
+    var subCategoria = response[0][8];
+    var categoria = response[0][9];
+
     $modalEdit.find('[id=idE]').val(id);
     $modalEdit.find('[id=nombreE]').val(nombre);
     $modalEdit.find('[id=precioE]').val(precio);
     $modalEdit.find('[id=descripcionE]').val(descripcion);
-    $modalEdit.find('[id=cboMarcasE]').val(marca);
+    $modalEdit.find('[id=cboCategoriasE]').val(categoria);
+    $modalEdit.find('[id=cboSubCategoriasE]').val(subCategoria);
     $modalEdit.find('[id=stockE]').val(stock);
     $modalEdit.find('[id=urlE]').val(url);
     $modalEdit.find('[id=imageE]').val(imagen);
-    $("#preview-imagenE").attr("src", "php/imagenes/" + imagen)
+    $("#preview-imagenE").attr("src", "php/imagenes/" + imagen);
     $('select').material_select();
     Materialize.updateTextFields();
   });
@@ -92,7 +98,23 @@ function mostrarModalEditar() {
 
 
 
-
+function obtenerSubCategoriasEdit() {
+  $("#cboSubCategoriasE").empty();
+  var idCategoria = $("#cboCategoriasE").val();
+  //obtener subcategorias para el select
+  $.post("php/obtenerSubCategoriasF.php", { idCategoria: idCategoria }, function(response) {
+    if (response.error) {
+      Materialize.toast(response.message, 3000, 'rounded');
+    } else {
+      $('#cboSubCategoriasE').prop('disabled', false);
+      $("#cboSubCategoriasE").append('<option value="0">Seleccione Sub Categoria</option>');
+      $.each(response.message, function(id, value) {
+        $("#cboSubCategoriasE").append('<option value="' + id + '">' + value + '</option>');
+      });
+      $("#cboSubCategoriasE").material_select();
+    };
+  });
+}
 
 
 
@@ -138,6 +160,7 @@ function obtenerCategoriasF() {
     } else {
       for (var i = 0; i < response.message.length; i++) {
         $("#cboCategorias").append($("<option></option>").attr("value", response.message[i].idcategoria).text(response.message[i].nombre));
+        $("#cboCategoriasE").append($("<option></option>").attr("value", response.message[i].idcategoria).text(response.message[i].nombre));
 
 
       };
@@ -148,19 +171,17 @@ function obtenerCategoriasF() {
 function obtenerSubCategoriasF() {
   $("#cboSubCategorias").empty();
   var idCategoria = $("#cboCategorias").val();
-
   //obtener subcategorias para el select
   $.post("php/obtenerSubCategoriasF.php", { idCategoria: idCategoria }, function(response) {
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
     } else {
       $('#cboSubCategorias').prop('disabled', false);
-      $('#cboMarcas').prop('disabled', true);
       $("#cboSubCategorias").append('<option value="0">Seleccione Sub Categoria</option>');
       $.each(response.message, function(id, value) {
         $("#cboSubCategorias").append('<option value="' + id + '">' + value + '</option>');
       });
-      $("#cboSubCategorias").material_select()
+      $("#cboSubCategorias").material_select();
     };
   });
 }
