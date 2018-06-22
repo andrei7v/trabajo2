@@ -26,6 +26,11 @@ $(document).ready(function() {
   $(document).on('click', '[data-delete]', mostrarModalEliminar);
   $formEliminar = $("#formEliminar");
   $formEliminar.on("submit", eliminarProducto);
+
+
+  $modalEdit = $('#modalEdit');
+  $(document).on('click', '[data-edit]', mostrarModalEditar);
+
 });
 
 
@@ -53,6 +58,47 @@ function registrarProducto(event) {
 
 var $modalEliminar;
 var $formEliminar;
+var $modalEdit;
+
+
+
+
+function mostrarModalEditar() {
+  var id = $(this).data('edit');
+  $.getJSON('php/getProductoById.php?id=' + id, function(response) {
+    var id = response[0][0];
+    var nombre = response[0][1];
+    var marca = response[0][2];
+    var descripcion = response[0][3];
+    var precio = response[0][4];
+    var stock = response[0][5];
+    var imagen = response[0][6];
+    var url = response[0][7];
+    $modalEdit.find('[id=idE]').val(id);
+    $modalEdit.find('[id=nombreE]').val(nombre);
+    $modalEdit.find('[id=precioE]').val(precio);
+    $modalEdit.find('[id=descripcionE]').val(descripcion);
+    $modalEdit.find('[id=cboMarcasE]').val(marca);
+    $modalEdit.find('[id=stockE]').val(stock);
+    $modalEdit.find('[id=urlE]').val(url);
+    $modalEdit.find('[id=imageE]').val(imagen);
+    $("#preview-imagenE").attr("src", "php/imagenes/" + imagen)
+    $('select').material_select();
+    Materialize.updateTextFields();
+  });
+  $modalEdit.modal('open');
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -109,6 +155,7 @@ function obtenerSubCategoriasF() {
       Materialize.toast(response.message, 3000, 'rounded');
     } else {
       $('#cboSubCategorias').prop('disabled', false);
+      $('#cboMarcas').prop('disabled', true);
       $("#cboSubCategorias").append('<option value="0">Seleccione Sub Categoria</option>');
       $.each(response.message, function(id, value) {
         $("#cboSubCategorias").append('<option value="' + id + '">' + value + '</option>');
@@ -199,7 +246,7 @@ function mostrarModalRegistrar() {
 
 function mostrarModalEliminar() {
   var id = $(this).data("delete");
-  $.getJSON('php/getProductoById.php?id=' + id, function(response) {
+  $.getJSON('php/getNameProductoById.php?id=' + id, function(response) {
     console.log(response);
     var id = response[0][0];
     var nombre = response[0][1];
@@ -217,24 +264,19 @@ function eliminarProducto(event) {
   var url = 'php/eliminarProducto.php';
   data = $(this).serializeArray();
   $.ajax({
-    url: url,
-    data: data,
-    method: 'POST'
-  })
-
-  .done(function(response) {
-    if (response.error) {
-      Materialize.toast(response.message, 3000, 'rounded');
-    } else {
-      Materialize.toast(response.message, 3000, 'rounded');
-      obtenerProductos();
-      $modalEliminar.modal('close');
-
-    };
-
-
-  });
-
+      url: url,
+      data: data,
+      method: 'POST'
+    })
+    .done(function(response) {
+      if (response.error) {
+        Materialize.toast(response.message, 3000, 'rounded');
+      } else {
+        Materialize.toast(response.message, 3000, 'rounded');
+        obtenerProductos();
+        $modalEliminar.modal('close');
+      };
+    });
 }
 
 

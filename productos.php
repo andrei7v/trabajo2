@@ -40,31 +40,31 @@
 
 <!-- template productos -->
   <template id="template-producto">
-            <tr>
-                <td data-idproducto></td>
-                <td data-nombre></td>
-                <td data-marca></td>
-                <td data-descripcion></td>
-                <td data-precio></td>
-                <td data-stock></td>
-                <td data-subcategoria></td>
-                <td data-categoria></td>
-            <td>
-                    <a data-edit class="waves-effect waves-light btn"> 
-                        <i class="large material-icons">edit</i>
-                    </a>
-                    <a data-image class="waves-effect waves-light btn"> 
-                        <i class="large material-icons">image</i>
-                    </a>
-                    <a data-download class="waves-effect waves-light btn"> 
-                        <i class="large material-icons">cloud_download</i>
-                    </a>
-                    <a data-delete data-nombred class="waves-effect waves-light btn"> 
-                        <i class="large material-icons">delete</i>
-                    </a>
-                </td>
-            </tr>
-        </template>
+    <tr>
+      <td data-idproducto></td>
+      <td data-nombre></td>
+      <td data-marca></td>
+      <td data-descripcion></td>
+      <td data-precio></td>
+      <td data-stock></td>
+      <td data-subcategoria></td>
+      <td data-categoria></td>
+      <td>
+        <a data-edit class="waves-effect waves-light btn"> 
+          <i class="large material-icons">edit</i>
+        </a>
+        <a data-image class="waves-effect waves-light btn"> 
+          <i class="large material-icons">image</i>
+        </a>
+        <a data-download class="waves-effect waves-light btn"> 
+          <i class="large material-icons">cloud_download</i>
+        </a>
+        <a data-delete data-nombred class="waves-effect waves-light btn"> 
+          <i class="large material-icons">delete</i>
+        </a>
+      </td>
+    </tr>
+  </template>
 
   <!--         <template id="template-card">
             <div class="col s4 m4">
@@ -88,8 +88,8 @@
 
 <!-- template botones categoria -->
   <template id="template-button">
-            <a class="waves-effect waves-light btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="" data-button=""><i class="material-icons right">cloud</i><span data-nombre></span></a>
-        </template>
+    <a class="waves-effect waves-light btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="" data-button=""><i class="material-icons right">cloud</i><span data-nombre></span></a>
+  </template>
 
   <!--  <div class="row" id="div-card">
             
@@ -112,9 +112,7 @@
             <th>Acciones</th>
           </tr>
         </thead>
-
         <tbody id="table-productos">
-
         </tbody>
       </table>
     </div>
@@ -147,13 +145,13 @@
         <div class="row">
           <div class="input-field col s6">
             <select id="cboCategorias" name="cboCategorias">
-                <option value="0">Seleccione una Categoria</option>     
+              <option value="0">Seleccione una Categoria</option>     
             </select>
             <label>Categoria</label>
           </div>
           <div class="input-field col s6">
             <select id="cboSubCategorias" name="cboSubCategorias" disabled>
-                          <option value="0">Seleccione Subcategoria</option>      
+              <option value="0">Seleccione Subcategoria</option>      
             </select>
             <label>Subcategoría</label>
           </div>
@@ -161,10 +159,10 @@
         <div class="row">
             <div class="input-field col s6">
               <select id="cboMarcas" name="cboMarcas" disabled>
-                            <option value="0">Seleccione Marca</option>      
+                <option value="0">Seleccione Marca</option>      
               </select>
               <label>Marca</label>
-          </div>
+            </div>
           <div class="input-field col s6">
             <input id="stock" name="stock" type="text" class="validate">
             <label for="stock">Stock</label>
@@ -176,18 +174,17 @@
             <label for="url">Url del producto</label>
           </div>
           <div class="input-field col s6">
-              <div class="file-field input-field">
-                  <div class="btn">
-                      <span>Imagen</span>
-                      <input type="file" id="imagen" name="imagen">
-                  </div>
-                  <div class="file-path-wrapper">
-                      <input class="file-path validate" type="text">
-                  </div>
-                  <img style="display: none" class="responsive-img" id="preview-image" src="#" alt="Preview Imagen">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Imagen</span>
+                <input type="file" id="imagen" name="imagen">
               </div>
+              <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+              </div>
+              <img style="display: none" class="responsive-img" id="preview-image" src="#" alt="Preview Imagen">
+            </div>
           </div>
-          
         </div>
       </div>
       <div class="modal-footer">
@@ -206,10 +203,10 @@
       <div class="modal-content">
         <h4>Esta seguro de eliminar este producto?</h4>
         <div class="row">
-            <input id="idD" name="idD" val="" hidden>
-            <div class="input-field col s12">
-              <p id="nombreD" name="nombreD" ></p>
-            </div>
+          <input id="idD" name="idD" val="" hidden>
+          <div class="input-field col s12">
+            <p id="nombreD" name="nombreD" ></p>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
@@ -219,8 +216,79 @@
     </form>
   </div>
 
-
-
+<!-- modal editar -->
+  <div id="modalEdit" class="modal modal-fixed-footer">
+    <form id="formEdit" class="col s12" enctype="multipart/form-data">
+      <div class="modal-content">
+      <h4>Editar producto</h4>
+        <div class="row">
+          <input type="hidden" name="idE" id="idE" value="">
+          <div class="input-field col s6">
+            <input id="nombreE" name="nombreE" type="text" class="validate">
+            <label for="nombreE">Nombre de la producto</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="precioE" name="precioE" type="text" class="validate">
+            <label for="precioE">Precio</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="descripcionE" name="descripcionE" class="materialize-textarea"></textarea>
+            <label for="descripcionE">Descripción</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <select id="cboCategoriasE" name="cboCategoriasE">
+              <!-- <option value="0">Seleccione una Categoria</option>      -->
+            </select>
+            <label>Categoria</label>
+          </div>
+          <div class="input-field col s6">
+            <select id="cboSubCategoriasE" name="cboSubCategoriasE">
+              <!-- <option value="0">Seleccione Subcategoria</option>       -->
+            </select>
+            <label>Subcategoría</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <select id="cboMarcasE" name="cboMarcasE">
+              <option value="" disabled selected>Seleccione Marca</option>      
+            </select>
+            <label>Marca</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="stockE" name="stockE" type="text" class="validate">
+            <label for="stockE">Stock</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="urlE" name="urlE" type="text" class="validate">
+            <label for="urlE">Url del producto</label>
+          </div>
+          <div class="input-field col s6">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Imagen</span>
+                <input type="file" id="imagen-prodE" name="imagen-prodE">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" id="imageE">
+              </div>
+              <img class="responsive-img" id="preview-imageE" src="#" alt="Preview Imagen">
+            </div>
+          </div>          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="waves-effect waves-green btn-flat">Guardar</button>
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancelar</a>
+      </div>
+    </form>
+  </div>
 
 
   <!-- Modal Structure -->
@@ -246,8 +314,3 @@
 </body>
 
 </html>
-
-<!-- 
-    header('Location: index.php'); 
-
- -->
