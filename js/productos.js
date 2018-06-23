@@ -15,8 +15,9 @@ $(document).ready(function() {
   $("#btn-registrar").on("click", mostrarModalRegistrar); //mostrar modal registrar
 
   $('#cboCategorias').change(obtenerSubCategoriasF);
-  $('#cboCategoriasE').change(obtenerSubCategoriasF);
+  $('#cboCategoriasE').change(obtenerSubCategoriasEdit);
   $('#cboSubCategorias').change(obtenerMarcasF);
+  $('#cboSubCategoriasE').change(obtenerMarcasEdit);
 
   $("#imagen").change(function() {
     $("#preview-image").hide();
@@ -178,9 +179,14 @@ function obtenerSubCategoriasF() {
   });
 }
 
+$(document).on('click', '[data-delete]', mostrarModalEliminar);
 
 function obtenerSubCategoriasEdit() {
-  $("#cboSubCategorias").empty();
+  $("#cboSubCategoriasE").empty();
+  $("#cboMarcasE").attr("disabled", true);
+  $("#cboMarcasE").html('<option value="0">Seleccione Marca</option>');
+  $("#cboMarcasE").material_select()
+
   var idCategoria = $("#cboCategoriasE").val();
   //obtener subcategorias para el select
   $.post("php/obtenerSubCategoriasF.php", { idCategoria: idCategoria }, function(response) {
@@ -218,6 +224,27 @@ function obtenerMarcasF() {
     };
   });
 }
+
+
+function obtenerMarcasEdit() {
+  $("#cboMarcasE").empty();
+  var idSubCategoria = $("#cboSubCategoriasE").val();
+  //obtener marcas para el select
+  $.post("php/obtenerMarcasF.php", { idSubCategoria: idSubCategoria }, function(response) {
+    if (response.error) {
+      Materialize.toast(response.message, 3000, 'rounded');
+    } else {
+      $('#cboMarcasE').prop('disabled', false);
+      $("#cboMarcasE").append('<option value="0">Seleccione Marca</option>');
+      $.each(response.message, function(id, value) {
+        $("#cboMarcasE").append('<option value="' + id + '">' + value + '</option>');
+      });
+      $("#cboMarcasE").material_select()
+    };
+  });
+}
+
+
 
 
 
