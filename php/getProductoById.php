@@ -29,7 +29,6 @@
 
 	$idCategoria = $producto[0][9];
 
-
 	$query = "SELECT * FROM subcategoria WHERE sub_categoria =".$idCategoria;
 	$result = mysqli_query($conn, $query);
 	$subCategorias = [];
@@ -40,6 +39,20 @@
 		}
 	}
 
-	echo json_encode(['producto'=>$producto,'html'=>$subCategorias]);
+	$idSubCategoria = $producto[0][8];
+
+ 	$query = "SELECT * FROM marca WHERE mar_subcategoria =".$idSubCategoria;
+	$result = mysqli_query($conn, $query);
+	$marcas = [];
+
+	if (mysqli_num_rows($result)!==0) {
+		while ($fila = mysqli_fetch_array($result)) {
+			$marcas[$fila[0]] = $fila[1];
+		}
+	}
+
+
+	echo json_encode(['producto'=>$producto,'fsubcat'=>$subCategorias,'fmarcas'=>$marcas]);
 	return;
  ?>
+

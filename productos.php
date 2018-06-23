@@ -255,7 +255,7 @@
         <div class="row">
           <div class="input-field col s6">
             <select id="cboMarcasE" name="cboMarcasE">
-              <option value="" disabled selected>Seleccione Marca</option>      
+              <!-- <option value="" disabled selected>Seleccione Marca</option>       -->
             </select>
             <label>Marca</label>
           </div>

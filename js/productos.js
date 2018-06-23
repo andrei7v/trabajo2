@@ -73,21 +73,27 @@ function mostrarModalEditar() {
     var descripcion = response.producto[0][3];
     var precio = response.producto[0][4];
     var stock = response.producto[0][5];
-    var imagen = response.producto[0][6];
-    var url = response.producto[0][7];
+    var url = response.producto[0][6];
+    var imagen = response.producto[0][7];
     var subCategoria = response.producto[0][8];
     var categoria = response.producto[0][9];
 
+    $("#cboSubCategoriasE").html('');
+    $("#cboMarcasE").html('');
 
-    $('#cboSubCategoriasE').prop('disabled', false);
+    //solo para mostrar sub cat
     $("#cboSubCategoriasE").append('<option value="0">Seleccione Sub Categoria</option>');
-    $.each(response.html, function(id, value) {
+    $.each(response.fsubcat, function(id, value) {
       $("#cboSubCategoriasE").append('<option value="' + id + '">' + value + '</option>');
     });
     $("#cboSubCategoriasE").material_select();
 
-
-
+    //solo para mostrar marcas
+    $("#cboMarcasE").append('<option value="0">Seleccione Marca</option>');
+    $.each(response.fmarcas, function(id, value) {
+      $("#cboMarcasE").append('<option value="' + id + '">' + value + '</option>');
+    });
+    $("#cboMarcasE").material_select();
 
     $modalEdit.find('[id=idE]').val(id);
     $modalEdit.find('[id=nombreE]').val(nombre);
@@ -95,6 +101,7 @@ function mostrarModalEditar() {
     $modalEdit.find('[id=descripcionE]').val(descripcion);
     $modalEdit.find('[id=cboCategoriasE]').val(categoria);
     $modalEdit.find('[id=cboSubCategoriasE]').val(subCategoria);
+    $modalEdit.find('[id=cboMarcasE]').val(marca);
     $modalEdit.find('[id=stockE]').val(stock);
     $modalEdit.find('[id=urlE]').val(url);
     $modalEdit.find('[id=imageE]').val(imagen);
