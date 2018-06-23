@@ -15,6 +15,7 @@ $(document).ready(function() {
   $("#btn-registrar").on("click", mostrarModalRegistrar); //mostrar modal registrar
 
   $('#cboCategorias').change(obtenerSubCategoriasF);
+  $('#cboCategoriasE').change(obtenerSubCategoriasF);
   $('#cboSubCategorias').change(obtenerMarcasF);
 
   $("#imagen").change(function() {
@@ -65,19 +66,28 @@ var $modalEdit;
 
 function mostrarModalEditar() {
   var id = $(this).data('edit');
-  //obtenerSubCategoriasEdit();
-
   $.getJSON('php/getProductoById.php?id=' + id, function(response) {
-    var id = response[0][0];
-    var nombre = response[0][1];
-    var marca = response[0][2];
-    var descripcion = response[0][3];
-    var precio = response[0][4];
-    var stock = response[0][5];
-    var imagen = response[0][6];
-    var url = response[0][7];
-    var subCategoria = response[0][8];
-    var categoria = response[0][9];
+    var id = response.producto[0][0];
+    var nombre = response.producto[0][1];
+    var marca = response.producto[0][2];
+    var descripcion = response.producto[0][3];
+    var precio = response.producto[0][4];
+    var stock = response.producto[0][5];
+    var imagen = response.producto[0][6];
+    var url = response.producto[0][7];
+    var subCategoria = response.producto[0][8];
+    var categoria = response.producto[0][9];
+
+
+    $('#cboSubCategoriasE').prop('disabled', false);
+    $("#cboSubCategoriasE").append('<option value="0">Seleccione Sub Categoria</option>');
+    $.each(response.html, function(id, value) {
+      $("#cboSubCategoriasE").append('<option value="' + id + '">' + value + '</option>');
+    });
+    $("#cboSubCategoriasE").material_select();
+
+
+
 
     $modalEdit.find('[id=idE]').val(id);
     $modalEdit.find('[id=nombreE]').val(nombre);
@@ -95,31 +105,6 @@ function mostrarModalEditar() {
   $modalEdit.modal('open');
 
 }
-
-
-
-function obtenerSubCategoriasEdit() {
-  $("#cboSubCategoriasE").empty();
-  var idCategoria = $("#cboCategoriasE").val();
-  //obtener subcategorias para el select
-  $.post("php/obtenerSubCategoriasF.php", { idCategoria: idCategoria }, function(response) {
-    if (response.error) {
-      Materialize.toast(response.message, 3000, 'rounded');
-    } else {
-      $('#cboSubCategoriasE').prop('disabled', false);
-      $("#cboSubCategoriasE").append('<option value="0">Seleccione Sub Categoria</option>');
-      $.each(response.message, function(id, value) {
-        $("#cboSubCategoriasE").append('<option value="' + id + '">' + value + '</option>');
-      });
-      $("#cboSubCategoriasE").material_select();
-    };
-  });
-}
-
-
-
-
-
 
 
 
@@ -185,6 +170,29 @@ function obtenerSubCategoriasF() {
     };
   });
 }
+
+
+function obtenerSubCategoriasEdit() {
+  $("#cboSubCategorias").empty();
+  var idCategoria = $("#cboCategoriasE").val();
+  //obtener subcategorias para el select
+  $.post("php/obtenerSubCategoriasF.php", { idCategoria: idCategoria }, function(response) {
+    if (response.error) {
+      Materialize.toast(response.message, 3000, 'rounded');
+    } else {
+      $('#cboSubCategoriasE').prop('disabled', false);
+      $("#cboSubCategoriasE").append('<option value="0">Seleccione Sub Categoria</option>');
+      $.each(response.message, function(id, value) {
+        $("#cboSubCategoriasE").append('<option value="' + id + '">' + value + '</option>');
+      });
+      $("#cboSubCategoriasE").material_select();
+    };
+  });
+}
+
+
+
+
 
 function obtenerMarcasF() {
   $("#cboMarcas").empty();

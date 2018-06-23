@@ -3,7 +3,6 @@
 	include 'conexion.php';
 
 	$idCategoria = $_POST["idCategoria"];
-
 	$query = "SELECT * FROM subcategoria WHERE sub_categoria = $idCategoria";
 	$result = mysqli_query($conn, $query);
 	$subCategorias = [];
