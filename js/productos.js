@@ -32,8 +32,33 @@ $(document).ready(function() {
 
   $modalEdit = $('#modalEdit');
   $(document).on('click', '[data-edit]', mostrarModalEditar);
+  $formEdit = $("#formEdit");
+  $formEdit.on("submit", editarProducto);
+
+
+  $("#imagen-prodE").change(function() {
+    $('#preview-imageE').hide();
+    readURL2(this);
+  });
+
+  $modalImage = $("#modalImage");
+  $(document).on("click", "[data-image]", mostrarModalImagen);
+
+
 
 });
+
+
+function mostrarModalImagen() {
+  var imagen = $(this).data('image');
+  $.post("php/obtenerInfoImagen.php", { imagen: imagen }, function(response) {
+    $modalImage.find("[id=titulo]").html(response.message[0].nombre);
+    $modalImage.find("[id=description]").html(response.message[0].descripcion);
+    $modalImage.find("[id=showImage]").attr("src", "php/imagenes/" + response.message[0].imagen);
+  });
+  $modalImage.modal('open');
+}
+
 
 
 function registrarProducto(event) {
@@ -60,8 +85,8 @@ function registrarProducto(event) {
 
 var $modalEliminar;
 var $formEliminar;
-var $modalEdit;
-
+var $formEdit;
+var $modalImage;
 
 
 
@@ -106,7 +131,7 @@ function mostrarModalEditar() {
     $modalEdit.find('[id=stockE]').val(stock);
     $modalEdit.find('[id=urlE]').val(url);
     $modalEdit.find('[id=imageE]').val(imagen);
-    $("#preview-imagenE").attr("src", "php/imagenes/" + imagen);
+    $("#preview-imageE").attr("src", "php/imagenes/" + imagen);
     $('select').material_select();
     Materialize.updateTextFields();
   });
@@ -346,6 +371,41 @@ function eliminarProducto(event) {
 
 
 
+function editarProducto() {
+  event.preventDefault();
+  var url = 'php/editarProducto.php';
+  $.ajax({
+    url: url,
+    data: new FormData(this),
+    method: 'POST',
+    processData: false,
+    contentType: false,
+    success: function(response) {
+      Materialize.toast(response.message, 3000, 'rounded');
+      setTimeout(function() {
+        obtenerProductos();
+        $modalEdit.modal('close');
+      }, 500);
+    }
+  });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -416,4 +476,22 @@ function renderTemplateBoton(id, nombre) {
 function activeTemplate(id) {
   var template = document.querySelector(id);
   return document.importNode(template.content, true);
+}
+
+
+
+/////////////////////vista previa imagen edicion
+
+
+
+
+function readURL2(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $("#preview-imageE").attr('src', e.target.result);
+    };
+    $("#preview-imageE").removeAttr("style");
+    reader.readAsDataURL(input.files[0]);
+  }
 }
