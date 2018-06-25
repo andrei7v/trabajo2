@@ -1,0 +1,17 @@
+tr td {
+  max-width: 300px;
+  white-space: normal;
+}
+
+#div-botones a,
+#table-productos a {
+  margin-bottom: 0.5rem;
+}
+
+td.eliminar {
+  margin-top: 0.7rem;
+}
+
+a#agregar {
+  margin-left: -1.2rem;
+}

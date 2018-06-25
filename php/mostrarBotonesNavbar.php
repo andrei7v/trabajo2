@@ -13,15 +13,13 @@
         $botones = $botones.'<li><a href="#"><i class="material-icons left">face</i>'.$_SESSION['usuario'].'</a></li>';
         $botones = $botones.'<li><a href="php/logout.php"><i class="material-icons left">exit_to_app</i>Cerrar Sesión</a></li>';
     } else {  //login usuario
-        $botones = '<li><a href="#"><i class="material-icons left">local_grocery_store</i>Comprar</a></li>';
+        $botones = '<li><a href="compras.php"><i class="material-icons left">local_grocery_store</i>Comprar</a></li>';
         $botones = $botones.'<li><a href="#"><i class="material-icons left">account_box</i>'.$_SESSION['usuario'].'</a></li>';
         $botones = $botones.'<li><a href="php/logout.php"><i class="material-icons left">exit_to_app</i>Cerrar Sesion</a></li>';
     }
 
 echo json_encode(['error'=>false, 'message'=>$botones]);
 return;
-
-    
 
 ?>	
 
