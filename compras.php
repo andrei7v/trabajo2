@@ -90,7 +90,7 @@
             </div>
             <div class="row">
                 <div class="col s10 offset-s1">
-                    <table>
+                    <table id="tabla">
                         <thead>
                             <tr>
                                 <th>Producto</th>

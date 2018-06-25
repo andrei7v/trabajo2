@@ -15,3 +15,7 @@ td.eliminar {
 a#agregar {
   margin-left: -1.2rem;
 }
+
+.fila-base {
+  display: none;
+}

@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   permisos();
   obtenerTodosProductos();
-
+  agregarLista();
   //   obtenerCategoriasF();
   //   $(document).on('click', '[data-button]', obtenerProductosPorSubCategoria); //mostrar producto al pulsar botones
   //   $("#todos").on('click', obtenerProductos); //mostrar todas las peliculas
@@ -99,12 +99,64 @@ function obtenerPrecio() {
 
 
 
+function agregarLista() {
+  var opcionAgregada = "";
+  var opcionActual = "";
+  var hay = 0;
+  var precio = "";
+  var cantidad = "";
+  $("#agregar").on("click", function() {
+
+    //texto del producto a elejir
+    opcionActual = $("#cboProductos option:selected").text();
+    //texto del precio
+    precio = $("#precio").val();
+    //texto de cantidad
+    cantidad = $("#cantidad").val();
+
+
+    $("#tabla tbody tr").each(function() {
+      //texto del primer input
+      opcionAgregada = $(this).children().children().val();
+      //si el texto superior es igual al input oculto = 1
+      if (opcionActual == opcionAgregada || precio == "" || cantidad == "") {
+        hay = 1;
+      };
+    });
+    if (!hay) {
+      //del primer tr->entra a input primero->su nombre a cursos() y su value del input sup --en fila base
+      $("#tabla tbody tr:eq(0) td:first-child").children().attr("name", "cursos[]").val(opcionActual);
+
+      $("#tabla tbody tr:eq(0) td:nth-child(2)").children().attr("name", "precios[]").val(precio);
+
+      $("#tabla tbody tr:eq(0) td:nth-child(3)").children().attr("name", "cantidades[]").val(cantidad);
 
 
 
+      //clona fila base remueve la clase, y apendisa
+      $("#tabla tbody tr:eq(0)").clone().removeClass("fila-base").appendTo("#tabla tbody");
+      //remueve propuedades de fila base y value
+      $("#tabla tbody tr:eq(0)").children().children().removeAttr("name").val("");
+    } else {
+      Materialize.toast("Complete los campos correctamente", 3000, 'rounded');
+    };
+    hay = 0;
+    $("#cboProductos").val(0);
+    $("#precio").val("");
+    $("#cantidad").val("");
+    Materialize.updateTextFields();
+    $('#cboProductos').material_select();
+  });
 
+  $(document).on("click", ".eliminar", function() {
+    var parent = $(this).parents().get(0);
+    $(parent).remove();
+    opcionActual = "";
+    opcionAgregada = "";
+    hay = 0;
+  })
 
-
+}
 
 
 
