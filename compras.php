@@ -38,8 +38,8 @@
   <template id="template-venta">
     <tr>
       <td data-idventa></td>
-      <td data-fecha></td>
-      <td data-costot></td>
+      <td data-fecha class="center-align"></td>
+      <td data-costot class="center-align"></td>
     </tr>
   </template>
 
@@ -51,8 +51,8 @@
         <thead>
           <tr>
             <th>Id</th>
-            <th>Fecha</th>
-            <th>Costo (S/)</th>
+            <th class="center-align">Fecha</th>
+            <th class="center-align">Costo Total(S/)</th>
           </tr>
         </thead>
         <tbody id="table-venta">

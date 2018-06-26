@@ -54,7 +54,7 @@ CREATE TABLE ventas(
 	ven_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	ven_usuario int NOT NULL,
 	FOREIGN KEY(ven_usuario) REFERENCES usuario(usu_id), 
-	ven_fecha date,
+	ven_fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	ven_costot int,
 	ven_estado boolean
 );

@@ -31,8 +31,8 @@
   
 	try {
 
-	$query = "INSERT INTO ventas(ven_usuario, ven_fecha, ven_estado)
-					VALUES($idAlumno, now(), 1)";
+	$query = "INSERT INTO ventas(ven_usuario, ven_estado)
+					VALUES($idAlumno, 1)";
 	 	$result = mysqli_query($conn, $query);
     // Obtiene el ultimo id insertado
     $last_id = mysqli_insert_id($conn);
