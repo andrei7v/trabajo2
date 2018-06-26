@@ -48,8 +48,8 @@
 		echo json_encode(['error'=>true, 'message'=>$msg]);
 		return;
     }
-    if ($stock < 1) {
-		$msg = "Debe contener minimo una unidad en stock";
+    if ($stock < 0) {
+		$msg = "El stock no debe ser negativo";
 		echo json_encode(['error'=>true, 'message'=>$msg]);
 		return;
 	}

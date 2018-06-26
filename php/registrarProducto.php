@@ -39,7 +39,7 @@
 		return;
 	}
 
-	if ($stock == "") {
+	if ($stock == "" || $stock == 0) {
 		$msg = "Ingrese stock del producto";
 		echo json_encode(['error'=>true, 'message'=>$msg]);
 		return;

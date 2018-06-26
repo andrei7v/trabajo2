@@ -3,7 +3,7 @@
 	include 'conexion.php';
 
 	$query = "SELECT prod_id, prod_nombre
-			  FROM producto" ;
+			  FROM producto WHERE prod_stock > 0" ;
 	$result = mysqli_query($conn, $query);
 
 	$categorias = [];
