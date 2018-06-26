@@ -16,6 +16,6 @@ a#agregar {
   margin-left: -1.2rem;
 }
 
-.fila-base {
-  display: none;
+tr.fila-base {
+  display: none !important;
 }

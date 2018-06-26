@@ -65,7 +65,7 @@
 
   <!-- Modal registrar nueva compra-->
   <div id="modalCompras" class="modal">
-    <form class="col s12" id="formRegister">
+    <form class="col s12" id="formCompras">
         <div class="modal-content">
             <h4>Registrar Compra</h4>
 
@@ -90,7 +90,7 @@
             </div>
             <div class="row">
                 <div class="col s10 offset-s1">
-                    <table id="tabla">
+                    <table id="tabla" class="striped responsive-table centered">
                         <thead>
                             <tr>
                                 <th>Producto</th>
@@ -102,13 +102,13 @@
                         <tbody>
                             <tr class="fila-base">
                                 <td>
-                                    <input type="text" readonly="" class="form-control">
+                                    <input type="text" readonly="" class="center-align">
                                 </td>
                                 <td>
-                                    <input type="text" readonly="" class="form-control">
+                                    <input type="text" readonly="" class="center-align">
                                 </td>
                                 <td>
-                                    <input type="text" readonly="" class="form-control">
+                                    <input type="text" readonly="" class="center-align">
                                 </td>
                                 <td class="eliminar btn red">X</td>
                             </tr>

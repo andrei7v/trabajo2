@@ -60,9 +60,17 @@
 		return;
 	}
 
-
-
-        $query = "UPDATE producto SET prod_nombre='".$nombre."',
+if ($nombreImagen == '') {
+	        $query = "UPDATE producto SET prod_nombre='".$nombre."',
+                                    prod_marca=".$marca.",
+                                    prod_descripcion='".$descripcion."',
+                                    prod_precio=".$precio.",
+																		prod_stock=".$stock.",
+                                    prod_url='".$url."'
+                                    WHERE prod_id=$id";
+		$result = mysqli_query($conn, $query);
+} else {
+	        $query = "UPDATE producto SET prod_nombre='".$nombre."',
                                     prod_marca=".$marca.",
                                     prod_descripcion='".$descripcion."',
                                     prod_precio=".$precio.",
@@ -71,13 +79,25 @@
                                     prod_url='".$url."'
                                     WHERE prod_id=$id";
 		$result = mysqli_query($conn, $query);
+}
+
+
+    //     $query = "UPDATE producto SET prod_nombre='".$nombre."',
+    //                                 prod_marca=".$marca.",
+    //                                 prod_descripcion='".$descripcion."',
+    //                                 prod_precio=".$precio.",
+    //                                 prod_stock=".$stock.",
+    //                                 prod_imagen='".$nombreImagen."',
+    //                                 prod_url='".$url."'
+    //                                 WHERE prod_id=$id";
+		// $result = mysqli_query($conn, $query);
 
 		if ($result) {
-			echo json_encode(['error'=>false, 'message'=>'Pelicula registrada correctamente','nombreimagen'=>$nombreImagen]);
+			echo json_encode(['error'=>false, 'message'=>'Pelicula registrada correctamente','nombreimagen'=>$query]);
 			return;
 		} else {
 			$msg = "Error en la base de datos1";
-			echo json_encode(['error'=>true, 'message'=>$msg,'cosa'=>$nombreImagen]);
+			echo json_encode(['error'=>true, 'message'=>$msg,'cosa'=>$query]);
 			return;
 		}
 

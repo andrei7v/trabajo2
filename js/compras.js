@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('.modal').modal();
 
   permisos();
-  obtenerTodosProductos();
+  obtenerTodosProductosEl();
   agregarLista();
   //   obtenerCategoriasF();
   //   $(document).on('click', '[data-button]', obtenerProductosPorSubCategoria); //mostrar producto al pulsar botones
@@ -17,6 +17,12 @@ $(document).ready(function() {
   $("#btn-registrar").on("click", mostrarModalCompras);
 
   $('#cboProductos').change(obtenerPrecio);
+
+
+
+  $("#formCompras").on('submit', registrarVenta);
+
+
   //   $('#cboCategorias').change(obtenerSubCategoriasF);
   //   $('#cboCategoriasE').change(obtenerSubCategoriasEdit);
   //   $('#cboSubCategorias').change(obtenerMarcasF);
@@ -70,7 +76,7 @@ function mostrarModalCompras() {
   $modalCompras.modal('open');
 }
 
-function obtenerTodosProductos() {
+function obtenerTodosProductosEl() {
   //obtener productos id, nombre
   $.getJSON("php/obtenerTodosProductos.php", function(response) {
     if (response.error) {
@@ -98,6 +104,44 @@ function obtenerPrecio() {
 
 
 
+function registrarVenta(event) {
+  Materialize.toast("hola", 3000, 'rounded');
+
+  event.preventDefault();
+  var url = "php/registrarVenta.php";
+  var data = $(this).serializeArray();
+  $.ajax({
+      url: url,
+      data: data,
+      method: 'POST'
+    })
+    .done(function(response) {
+      if (response.error) {
+        alert(response.message);
+      } else {
+        alert(response.message);
+        location.reload(); ///ver
+      };
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function agregarLista() {
   var opcionAgregada = "";
@@ -106,7 +150,6 @@ function agregarLista() {
   var precio = "";
   var cantidad = "";
   $("#agregar").on("click", function() {
-
     //texto del producto a elejir
     opcionActual = $("#cboProductos option:selected").text();
     //texto del precio
@@ -125,7 +168,7 @@ function agregarLista() {
     });
     if (!hay) {
       //del primer tr->entra a input primero->su nombre a cursos() y su value del input sup --en fila base
-      $("#tabla tbody tr:eq(0) td:first-child").children().attr("name", "cursos[]").val(opcionActual);
+      $("#tabla tbody tr:eq(0) td:first-child").children().attr("name", "productos[]").val(opcionActual);
 
       $("#tabla tbody tr:eq(0) td:nth-child(2)").children().attr("name", "precios[]").val(precio);
 
