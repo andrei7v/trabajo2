@@ -4,6 +4,7 @@ $(document).ready(function() {
   $('.modal').modal();
 
   permisos();
+  obtenerventas();
   obtenerTodosProductosEl();
   agregarLista();
   //   obtenerCategoriasF();
@@ -125,6 +126,7 @@ function registrarVenta(event) {
         Materialize.updateTextFields();
         $('#cboProductos').material_select();
         $("tbody").html('<tr class="fila-base"><td><input type="text" readonly=""></td><td><input type="text" readonly="" class="center-align"></td><td><input type="text" readonly="" class="center-align"></td><td class="eliminar btn red">X</td></tr>');
+        obtenerventas();
       };
     });
 }
@@ -543,10 +545,33 @@ var $modalCompras;
 // }
 
 
+//al cargar la web cargar productos y botones okok
+function obtenerventas() {
+  $("#table-venta").html("");
+
+  $.getJSON("php/obtenerVentasporId.php", function(response) {
+
+    //template
+    if (response.error) {
+      Materialize.toast(response.message, 3000, 'rounded');
+    } else {
+      for (var i = 0; i < response.message.length; i++) {
+        renderTemplateVentas(response.message[i].idventa, response.message[i].fecha, response.message[i].costot);
+      };
+    };
+  });
+}
 
 
 
+function renderTemplateVentas(id, fecha, costot) {
+  var clone = activeTemplate("#template-venta");
 
+  clone.querySelector("[data-idventa]").innerHTML = id;
+  clone.querySelector("[data-fecha]").innerHTML = fecha;
+  clone.querySelector("[data-costot]").innerHTML = costot;
+  $("#table-venta").append(clone);
+}
 
 
 

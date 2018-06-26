@@ -23,7 +23,7 @@
     </div>
   </nav>
   
-<!-- 4 botones superiores okokooooooooooooooooooooooooooooooooooooooooooooooooooooo-->
+<!-- 1 botones superiores okokooooooooooooooooooooooooooooooooooooooooooooooooooooo-->
   <div class="row">
     <div class="col s11 offset-s1">
       <br>
@@ -52,10 +52,10 @@
           <tr>
             <th>Id</th>
             <th>Fecha</th>
-            <th>Costo</th>
+            <th>Costo (S/)</th>
           </tr>
         </thead>
-        <tbody id="table-productos">
+        <tbody id="table-venta">
         </tbody>
       </table>
     </div>
