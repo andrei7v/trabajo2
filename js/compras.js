@@ -105,8 +105,6 @@ function obtenerPrecio() {
 
 
 function registrarVenta(event) {
-  Materialize.toast("hola", 3000, 'rounded');
-
   event.preventDefault();
   var url = "php/registrarVenta.php";
   var data = $(this).serializeArray();
@@ -117,25 +115,19 @@ function registrarVenta(event) {
     })
     .done(function(response) {
       if (response.error) {
-        alert(response.message);
+        Materialize.toast(response.message, 3000, 'rounded');
       } else {
-        alert(response.message);
-        location.reload(); ///ver
+        Materialize.toast(response.message, 3000, 'rounded');
+        $("#cboProductos").val(0);
+        $("#precio").val("");
+        $("#cantidad").val("");
+        $modalCompras.modal('close');
+        Materialize.updateTextFields();
+        $('#cboProductos').material_select();
+        $("tbody").html('<tr class="fila-base"><td><input type="text" readonly=""></td><td><input type="text" readonly="" class="center-align"></td><td><input type="text" readonly="" class="center-align"></td><td class="eliminar btn red">X</td></tr>');
       };
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

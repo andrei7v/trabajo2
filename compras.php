@@ -102,7 +102,7 @@
                         <tbody>
                             <tr class="fila-base">
                                 <td>
-                                    <input type="text" readonly="" class="center-align">
+                                    <input type="text" readonly="">
                                 </td>
                                 <td>
                                     <input type="text" readonly="" class="center-align">

@@ -61,14 +61,14 @@ CREATE TABLE ventas(
 ALTER TABLE ventas ENGINE=INNODB;
 
 CREATE TABLE deta_ventas( 
+	prod_id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	deta_ventas int NOT NULL,
 	deta_producto int NOT NULL,
 	FOREIGN KEY(deta_ventas) REFERENCES ventas(ven_id), 
 	FOREIGN KEY(deta_producto) REFERENCES producto(prod_id), 
-	PRIMARY KEY(deta_ventas, deta_producto), 
 	deta_cantidad int,
 	deta_costo int,
-	deta_costot int,
+	deta_subtotal int,
 	deta_estado boolean
 );
 ALTER TABLE deta_ventas ENGINE=INNODB;

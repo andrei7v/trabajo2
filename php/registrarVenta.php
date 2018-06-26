@@ -1,6 +1,6 @@
 <?php
 	header("Content-type: application/json");
-  include 'conn.php';
+  include 'conexion.php';
   date_default_timezone_set('America/Lima');
 
   session_start();
@@ -44,38 +44,43 @@
 
 
 
-		$costou = 0; //costo total x producto
-		$sumac = 0;
+		$subtotalporprod = 0; //costo total x producto
+		$costotal = 0;
+
+
+	//	$sumac = 0;
 
 		for ($i=0; $i < sizeof($productos); $i++) {
 			$query2 = "SELECT * FROM producto WHERE prod_nombre = '$productos[$i]'";
 			$result2 = mysqli_query($conn, $query2);
 			$row = mysqli_fetch_array($result2);
 
-      // $sumac += $row[3];
-      $costou = $row[4]*$cantidad[$i];
-			$query3 = "INSERT INTO deta_matricula(deta_ventas, deta_producto, deta_cantidad, deta_costot, deta_estado)
-						VALUES($last_id, $row[0], $cantidad[$i],$costou, 1)";
+			// $sumac += $row[3];
+      $subtotalporprod = $row[4]*$cantidades[$i];
+			$query3 = "INSERT INTO deta_ventas(deta_ventas, deta_producto, deta_cantidad, deta_costo, deta_subtotal, deta_estado)
+						VALUES($last_id, $row[0], $cantidades[$i], $row[4], $subtotalporprod, 1)";
 			$result3 = mysqli_query($conn, $query3);
+			$costotal = $costotal + $subtotalporprod;
 		}
-		$costot = $sumac * $costo;
-		$query4 = "UPDATE matricula SET mat_costo =$costot WHERE mat_id = $last_id";
+
+
+		$query4 = "UPDATE ventas SET ven_costot =$costotal WHERE ven_id = $last_id";
 		$result4 = mysqli_query($conn, $query4);
 
-		$query6 = "SELECT * FROM matricula WHERE mat_id = $last_id";
-		$result6 = mysqli_query($conn, $query6);
-		$row2 = mysqli_fetch_array($result6);
-		$eee = $row2[1];
+		// $query6 = "SELECT * FROM matricula WHERE mat_id = $last_id";
+		// $result6 = mysqli_query($conn, $query6);
+		// $row2 = mysqli_fetch_array($result6);
+		// $eee = $row2[1];
 
-		$query7 = "UPDATE alumno SET alu_registrado = 1 WHERE alu_id = $eee";
-		$result7 = mysqli_query($conn, $query7);
+		// $query7 = "UPDATE alumno SET alu_registrado = 1 WHERE alu_id = $eee";
+		// $result7 = mysqli_query($conn, $query7);
 
 		$conn->commit();
-		echo json_encode(['error'=>false, 'message'=>'Matricula registrada correctamente']);
+		echo json_encode(['error'=>false, 'message'=>'Compra registrada correctamente']);
 		return;
 	} catch (Exception $e) {
 		$conn->rollback();
-		echo json_encode(['error'=>true, 'message'=>'No se pudo registrar la matricula']);
+		echo json_encode(['error'=>true, 'message'=>'No se pudo registrar la compra']);
 		return;
 	}
 
