@@ -4,7 +4,6 @@ $(document).ready(function() {
   $('.modal').modal();
 
   permisos();
-  obtenerventas();
   obtenerTodosProductosEl();
   agregarLista();
   //   obtenerCategoriasF();
@@ -62,7 +61,7 @@ function permisos() {
   $.getJSON("php/permisos.php", function(response) {
     //1-user - 2-admin
     if (response.permisos == 1) {
-      //   obtenerProductos(); cambiiiiiiiiiiiiiiiiiiiiiiiiiiiiiarrrrrrrrrrr
+      obtenerventas();
     } else {
       window.location = 'index.php';
       return;
