@@ -33,11 +33,76 @@
   </div>
 
 
-  <div class="container">
+
+
+
+
+
+
+<!-- MODIFICAR AQUI -->
+<div class="container">
+   <div class="row" id="div-card">
+   </div>
+</div>
+
+
+<!-- template de cards -->
+<template id="template-card">
+  <div class="card col s12 m6 l4">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" data-rutaimagen>
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4" data-nombre><i class="material-icons right">more_vert</i></span>
+      <p data-precio></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4" data-nombre2><i class="material-icons right">close</i>Card Title4</span>
+      <p data-descripcion></p>
+      <p data-marca></p>
+      <p data-precio2></p>
+    </div>
+  </div>
+</template>
+
+  <!-- <div class="card col s12 m6 l4">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="php/imagenes/licuadora1.jpg">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Card Title2<i class="material-icons right">more_vert</i></span>
+      <p>Precio</p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title4</span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+      <p>Marca:</p>
+      <p>Precio:</p>
+    </div>
+  </div>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="container">
     <div class="section">
 
-      <!--   Icon Section   -->
-      <div class="row">
+      <di v class="row">
         <div class="col s12 m4">
           <div class="icon-block">
             <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
@@ -68,7 +133,7 @@
 
     </div>
     <br><br>
-  </div>
+  </div> -->
 
   <footer class="page-footer blue darken-2">
     <div class="container">

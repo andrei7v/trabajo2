@@ -10,7 +10,7 @@
 			  ";
 	$result = mysqli_query($conn, $query);
 
-	$ventas = [];
+	$productos = [];
 
 	if (mysqli_num_rows($result)==0) {
 		// $msg = "No hay ventas disponibles";

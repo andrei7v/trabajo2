@@ -91,10 +91,6 @@
     <a class="waves-effect waves-light btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="" data-button=""><i class="material-icons right">cloud</i><span data-nombre></span></a>
   </template>
 
-  <!--  <div class="row" id="div-card">
-            
-        </div> -->
-
 <!-- donde se muestra el contenido total -->
   <div class="row">
     <div class="col s10 offset-s1">
