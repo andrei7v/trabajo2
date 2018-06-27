@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('.modal').modal();
 
   permisos();
-  paginacion(1);
+
 });
 
 
@@ -13,7 +13,7 @@ function permisos() {
   $.getJSON("php/permisos.php", function(response) {
     //1-user - 2-admin
     if (response.permisos == 2) {
-      obtenerventas();
+      paginacion(1);
     } else {
       window.location = 'index.php';
       return;
@@ -30,7 +30,6 @@ function paginacion(pagina) {
     type: 'POST',
     data: 'pagina=' + pagina,
     success: function(response) {
-      console.log(response);
       var array = eval(response);
       $("#table-venta").html(array[0]);
       $("#paginacion").html(array[1]);

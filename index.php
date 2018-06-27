@@ -44,11 +44,16 @@
    <div class="row" id="div-card">
    </div>
 </div>
+<div class="row center-align">
+  <ul class="pagination" id="paginacion">
+  
+  </ul>
+</div>
 
 
 <!-- template de cards -->
-<template id="template-card">
-  <div class="card col s12 m6 l4">
+<!-- <template id="template-card">
+  <div class="card col s12 m6">
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" data-rutaimagen>
     </div>
@@ -63,7 +68,7 @@
       <p data-precio2></p>
     </div>
   </div>
-</template>
+</template> -->
 
   <!-- <div class="card col s12 m6 l4">
     <div class="card-image waves-effect waves-block waves-light">
