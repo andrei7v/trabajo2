@@ -2,10 +2,16 @@
 	header('content-type: application/json');
 	include 'conexion.php';
 
-	$query = "SELECT prod_nombre, prod_descripcion, prod_precio,
-                  prod_marca, prod_imagen
-    			  FROM producto
-			      ";
+	$query = "SELECT LEFT(p.prod_nombre, 29), p.prod_descripcion, p.prod_precio,
+                  m.mar_name, p.prod_imagen, p.prod_nombre
+    			  FROM producto p
+            INNER JOIN marca m
+			      ON p.prod_marca = m.mar_id
+            WHERE p.prod_estado = 1 AND p.prod_stock > 1
+            ";
+            
+
+            
 	$result = mysqli_query($conn, $query);
 
 	$cards = [];
@@ -16,7 +22,7 @@
 		return;
 	} else {
 		while ($fila = mysqli_fetch_array($result)) {
-			$cards[] = array('nombre' => $fila[0], 'descripcion' => $fila[1], 'precio' => $fila[2],'marca' => $fila[3],'rutaimagen' => $fila[4]);
+			$cards[] = array('nombre' => $fila[0], 'descripcion' => $fila[1], 'precio' => $fila[2],'marca' => $fila[3],'rutaimagen' => $fila[4],'nombret' => $fila[5]);
 		}
 	}
 

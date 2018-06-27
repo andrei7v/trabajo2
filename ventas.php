@@ -39,7 +39,7 @@
 <!-- donde se muestra el contenido total modddd-->
 <h2 class="center-align">Registro de Ventas</h2>
   <div class="row">
-    <div class="col s4 offset-s4">
+    <div class="col s6 offset-s3">
       <table class="striped responsive-table">
         <thead>
           <tr>
