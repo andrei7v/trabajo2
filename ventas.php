@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/materialize.css">
   <link rel="stylesheet" href="css/navbar.css">
   <!-- <link rel="stylesheet" href="css/compras.css"> -->
-  <title>Compras</title>
+  <title>Ventas</title>
 </head>
 
 <body>

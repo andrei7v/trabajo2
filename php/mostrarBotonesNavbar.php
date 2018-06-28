@@ -9,7 +9,7 @@
     } else if ($_SESSION['role'] == 2) { //login admin
         $botones = '<li><a href="productos.php"><i class="material-icons left">view_list</i>Productos</a></li>';
         $botones = $botones.'<li><a href="ventas.php"><i class="material-icons left">local_grocery_store</i>Ventas</a></li>';
-        $botones = $botones.'<li><a href="#"><i class="material-icons left rotate-90">format_align_right</i>Graficos</a></li>';
+        $botones = $botones.'<li><a href="graficos.php"><i class="material-icons left rotate-90">format_align_right</i>Graficos</a></li>';
         $botones = $botones.'<li><a href="#"><i class="material-icons left">face</i>'.$_SESSION['usuario'].'</a></li>';
         $botones = $botones.'<li><a href="php/logout.php"><i class="material-icons left">exit_to_app</i>Cerrar Sesión</a></li>';
     } else {  //login usuario
