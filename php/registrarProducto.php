@@ -62,7 +62,7 @@
 		$result = mysqli_query($conn, $query);
 
 		if ($result) {
-			echo json_encode(['error'=>false, 'message'=>'Categoría registrada correctamente']);
+			echo json_encode(['error'=>false, 'message'=>'Producto registrado correctamente']);
 			return;
 		} else {
 			$msg = "Error en la base de datos";

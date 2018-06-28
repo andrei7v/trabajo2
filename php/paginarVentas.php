@@ -58,6 +58,7 @@ include_once 'conexion.php';
 			  FROM ventas v
         INNER JOIN usuario u
         ON v.ven_usuario = u.usu_id
+				ORDER BY v.ven_id DESC
         LIMIT $limit, $numeroLotes
 			  ";
 

@@ -75,7 +75,8 @@ ALTER TABLE deta_ventas ENGINE=INNODB;
 
 INSERT INTO usuario(usu_name, usu_role, usu_usuario, usu_password, usu_telefono, usu_direccion,usu_estado)
 VALUES ("admin", 2, "admin",  "81dc9bdb52d04dc20036dbd8313ed055", "999999999", "", 1),
-("user", 1, "user",  "81dc9bdb52d04dc20036dbd8313ed055", "888888888", "Chimbote", 1);
+("user", 1, "user",  "81dc9bdb52d04dc20036dbd8313ed055", "888888888", "Chimbote", 1),
+("user2", 1, "user2",  "81dc9bdb52d04dc20036dbd8313ed055", "777777777", "Chimbote", 1);
 
 INSERT INTO categoria(cat_name)
 VALUES ("Electrogar"),
@@ -138,10 +139,34 @@ VALUES ("Minicomponente CM5760 1100 W", 31,
 		("Licuadora 2L BLSTVB G00-051", 6,
 		"Licuadora de alto rendimiento, potencia y precisión, con funciones automáticas pre-programadas, que te permiten preparar bebidas y recetas que se adaptan a un estilo de vida más sano.",
 		809, 9,'licuadora1.jpg',"http://www.sodimac.com.pe/sodimac-pe/product/259479X/Licuadora-2L-BLSTVB-G00-051/259479X",1),
+		("Lavadora 9kg WAT28404PE", 4,
+		"EcoSilence Drive: Bajo consumo de energía y funcionamiento silencioso. Indicador de Consumo de energía en el programa seleccionado. VarioPerfect: por fin puedes elegir resultados de lavado perfectos un 65% más rápido o ahorrando un 50% de agua y energía.",
+		3099, 4,'lavadora1.jpg',"http://www.sodimac.com.pe/sodimac-pe/product/2698617/Lavadora-9kg-WAT28404PE/2698617",1),
+		("Refrigeradora 438L LT44SGP", 13,
+		"Refrigeradora con Inverter Linear Compressor (10 años de garantía) y 438 L de capacidad. Bandejas de vidrio templado, cajon verdulero y cajón free zone. Panel táctil con luz led. Enfriamiento uniforme. Elimina bacterias hasta en 99.999%. Fresh 0 Zone se mantiene en una temperatura alredededor de 0? para que puedas almacenar carnes que desees cocinar al momento, sin tener que esperar a que descongelen. Con el sistema de múltiple flujo de aire, cada esquina del conservador tendrá la misma temperatura.",
+		2799, 1,'refrigeradora1.jpg',"http://www.sodimac.com.pe/sodimac-pe/product/2576031/Refrigeradora-438L-LT44SGP/2576031",1),
+		("Proyector Multimedia VPL-DX220", 25,
+		"El proyector VPL-DX220 XGA es una elección rentable y totalmente equipada de funciones para conseguir presentaciones claras y brillantes en oficinas, salas de reuniones y aulas de centros de enseñanza. Compacto, ligero y con un bajo consumo energético, es fácil de configurar y conectar con otros dispositivos.El inicio automático detecta las señales de una fuente HDMI o VGA conectada al encender la lámpara del proyector, de modo que todo esté preparado para comenzar a presentar.",
+		2015, 0,'proyector1.jpg',"http://www.sodimac.com.pe/sodimac-pe/product/2671506/Proyector-Multimedia-VPL-DX220/2671506",1),
+		("Televisor Smart Super Ultra HD 4K 49pulg 49UJ7500", 23,
+		"LG Super UHD TV supera los métodos convencionales como adoptar luces LED o añadir color con láminas Quantum Dot. Ahora se integra directamente la tecnología Nano Cell, lo último en LCD, al panel para mejorar la calidad de imagen.",
+		2199, 7,'televisor2.jpg',"http://www.sodimac.com.pe/sodimac-pe/product/2622920/Televisor-Smart-Super-Ultra-HD-4K-49p-49UJ7500-",1),
 		("NB ACER G3-572-72PM", 17,
 		"Intel Core i7 (7th Gen) i7-7700HQ Quad-core (4 Core) 2.80 GHz - 16 GB DDR4 SDRAM - 1 TB HDD - 256 GB SSD - Windows 10 Home 64-bit - 1920 x 1080 - Tecnología IPS de Variación en el Plano, Visión Confortable - Negro - NVIDIA GeForce GTX 1060 con 6 GB GDDR5 - Bluetooth - Español Teclado - Cámara Frontal/Cámara Web - IEEE 802.11ac - Gigabit Ethernet - Red (RJ-45) - HDMI - 1 x Puertos USB 3.",
 		5999, 0,'laptop1.jpg',"http://www.sodimac.com.pe/sodimac-pe/product/2672413/Televisor-Smart-LED-Ultra-HD-50-UN50MU6103GXPE/2672413",1);
 
+INSERT INTO ventas(ven_usuario, ven_fecha, ven_costot, ven_estado)
+VALUES (3, "2018-06-27 23:37:00", 18339, 1),
+(3, "2018-06-27 23:37:55", 2799, 1),
+(2, "2018-06-28 00:03:20", 6565, 1);
 
 
-
+INSERT INTO deta_ventas(deta_ventas, deta_producto, deta_cantidad, deta_costo, deta_subtotal, deta_estado)
+VALUES (1, 4, 4, 3099, 12396,1),
+(1, 2, 2, 1599, 3198, 1),
+(1, 1, 5, 549, 2745, 1),
+(2, 5, 1, 2799, 2799, 1),
+(3, 2, 1, 1599, 1599, 1),
+(3, 1, 1, 549, 549, 1),
+(3, 5, 1, 2799, 2799, 1),
+(3, 3, 2, 809, 1618, 1);

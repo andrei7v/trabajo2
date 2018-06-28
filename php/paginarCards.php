@@ -2,7 +2,7 @@
 include_once 'conexion.php';
 	$paginaActual = $_POST["pagina"];
 
-	$query = "SELECT * FROM producto";
+	$query = "SELECT * FROM producto WHERE prod_estado = 1 AND prod_stock > 1";
 	$result = mysqli_query($conn, $query);
 
   //total ventas

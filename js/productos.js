@@ -122,9 +122,13 @@ function registrarProducto(event) {
         Materialize.toast(response.message, 3000, 'rounded');
         $modalRegister.modal('close');
         paginacion(1);
+        setTimeout(function() {
+          location.reload();
+        }, 2000);
 
       };
     });
+
 }
 
 var $modalEliminar;
