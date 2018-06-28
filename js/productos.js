@@ -6,7 +6,7 @@ $(document).ready(function() {
   permisos();
   obtenerCategoriasF();
   $(document).on('click', '[data-button]', obtenerProductosPorSubCategoria); //mostrar producto al pulsar botones
-  $("#todos").on('click', obtenerProductos); //mostrar todas las peliculas
+  $("#todos").on('click', todo); //mostrar todas los productos
 
   $formRegister = $("#formRegister");
   $formRegister.on("submit", registrarProducto);
@@ -48,6 +48,50 @@ $(document).ready(function() {
 
 });
 
+function todo() {
+  obtenerProductos();
+  paginacion(1);
+}
+
+
+
+var $modalRegister;
+var $formRegister;
+
+function permisos() {
+  $.getJSON("php/permisos.php", function(response) {
+    if (response.permisos == 2) {
+      obtenerProductos();
+      paginacion(1);
+    } else {
+      window.location = 'index.php';
+      return;
+    }
+  });
+}
+
+
+function paginacion(pagina) {
+  var url = "php/paginarProductos.php";
+  $.ajax({
+    url: url,
+    type: 'POST',
+    data: 'pagina=' + pagina,
+    success: function(response) {
+      var array = eval(response);
+      $("#table-productos").html(array[0]);
+      $("#paginacion").html(array[1]);
+    }
+  });
+  return false
+}
+
+
+
+
+
+
+
 
 function mostrarModalImagen() {
   var imagen = $(this).data('image');
@@ -77,7 +121,7 @@ function registrarProducto(event) {
       } else {
         Materialize.toast(response.message, 3000, 'rounded');
         $modalRegister.modal('close');
-        obtenerProductos();
+        paginacion(1);
 
       };
     });
@@ -155,23 +199,16 @@ function readURL(input) {
 }
 
 
-var $modalRegister;
-var $formRegister;
 
-function permisos() {
-  $.getJSON("php/permisos.php", function(response) {
-    if (response.permisos == 2) {
-      obtenerProductos();
-    } else {
-      window.location = 'index.php';
-      return;
-    }
-  });
-}
+
+
+
+
 
 
 function obtenerCategoriasF() {
   //obtener categorias para el select
+
   $.getJSON("php/obtenerCategorias.php", function(response) {
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
@@ -277,6 +314,7 @@ function obtenerMarcasEdit() {
 //mostar producto al pulsar botones okokoko
 function obtenerProductosPorSubCategoria() {
   $("#table-productos").html("");
+  $("#paginacion").html("");
   ////$("#div-card").html("");                         no usado solo para cards
   var idSubCategoria = $(this).data("button");
   $.ajax({
@@ -296,22 +334,22 @@ function obtenerProductosPorSubCategoria() {
 }
 
 
-//al cargar la web cargar productos y botones okok
+//al cargar la web cargar productos y botones okok eliminar
 function obtenerProductos() {
-  $("#table-productos").html("");
+  // $("#table-productos").html("");
   //   $("#div-card").html("");                   no usado solo para cards
   $("#div-botones").html("");
-  $.getJSON("php/obtenerProductos.php", function(response) {
+  // $.getJSON("php/obtenerProductos.php", function(response) {
 
-    //template
-    if (response.error) {
-      Materialize.toast(response.message, 3000, 'rounded');
-    } else {
-      for (var i = 0; i < response.message.length; i++) {
-        renderTemplateProductos(response.message[i].idproducto, response.message[i].nombre, response.message[i].marca, response.message[i].descripcion, response.message[i].precio, response.message[i].stock, response.message[i].imagen, response.message[i].subcategoria, response.message[i].categoria);
-      };
-    };
-  });
+  //   //template
+  //   if (response.error) {
+  //     Materialize.toast(response.message, 3000, 'rounded');
+  //   } else {
+  //     for (var i = 0; i < response.message.length; i++) {
+  //       renderTemplateProductos(response.message[i].idproducto, response.message[i].nombre, response.message[i].marca, response.message[i].descripcion, response.message[i].precio, response.message[i].stock, response.message[i].imagen, response.message[i].subcategoria, response.message[i].categoria);
+  //     };
+  //   };
+  // });
   $.getJSON("php/obtenerSubCategorias.php", function(response) {
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
@@ -362,6 +400,7 @@ function eliminarProducto(event) {
       } else {
         Materialize.toast(response.message, 3000, 'rounded');
         obtenerProductos();
+        paginacion(1);
         $modalEliminar.modal('close');
       };
     });
@@ -384,6 +423,7 @@ function editarProducto() {
       Materialize.toast(response.message, 3000, 'rounded');
       setTimeout(function() {
         obtenerProductos();
+        paginacion(1);
         $modalEdit.modal('close');
       }, 500);
     }
@@ -405,11 +445,7 @@ function editarProducto() {
 
 
 
-
-
-
-
-// renderizar el template productos okok
+// renderizar el template productos okok eliminar
 function renderTemplateProductos(id, nombre, marca, descripcion, precio, stock, imagen, subcategoria, categoria) {
   var clone = activeTemplate("#template-producto");
 
@@ -441,7 +477,7 @@ function renderTemplateProductos(id, nombre, marca, descripcion, precio, stock, 
 }
 
 
-// para los carrrdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd no utilizado
+// para los carrrdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd no utilizado eliminar
 function renderTemplateCard(id, nombre, descripcion, duracion, anio, categoria) {
 
   var clone = activeTemplate("#template-card");

@@ -38,7 +38,7 @@
   </div>
 
 
-<!-- template productos -->
+<!-- template productos noooooooooooooooo eliminar-->
   <template id="template-producto">
     <tr>
       <td data-idproducto></td>
@@ -66,23 +66,7 @@
     </tr>
   </template>
 
-  <!--         <template id="template-card">
-            <div class="col s4 m4">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <span data-nombre class="card-title">Card Title</span>
-                        <p data-descripcion>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                        <p data-duracion></p>
-                        <p data-categoria></p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#" data-editar>Editar</a>
-                        <a href="#" data-eliminar>Eliminar</a>
-                    </div>
-                </div>
-            </div>
-        </template> -->
+
 
 
 
@@ -109,9 +93,17 @@
           </tr>
         </thead>
         <tbody id="table-productos">
+        
         </tbody>
       </table>
     </div>
+  </div>
+
+
+  <div class="row center-align">
+    <ul class="pagination" id="paginacion">
+    
+    </ul>
   </div>
 
   <!-- Modal registrar nuevo producto-->
