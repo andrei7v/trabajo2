@@ -32,14 +32,6 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
-<!-- MODIFICAR AQUI -->
 <div class="container">
    <div class="row" id="div-card">
    </div>
@@ -50,95 +42,6 @@
   </ul>
 </div>
 
-
-<!-- template de cards -->
-<!-- <template id="template-card">
-  <div class="card col s12 m6">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" data-rutaimagen>
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4" data-nombre><i class="material-icons right">more_vert</i></span>
-      <p data-precio></p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4" data-nombre2><i class="material-icons right">close</i>Card Title4</span>
-      <p data-descripcion></p>
-      <p data-marca></p>
-      <p data-precio2></p>
-    </div>
-  </div>
-</template> -->
-
-  <!-- <div class="card col s12 m6 l4">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="php/imagenes/licuadora1.jpg">
-    </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Card Title2<i class="material-icons right">more_vert</i></span>
-      <p>Precio</p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>Card Title4</span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-      <p>Marca:</p>
-      <p>Precio:</p>
-    </div>
-  </div>
-
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- <div class="container">
-    <div class="section">
-
-      <di v class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <br><br>
-  </div> -->
 
   <footer class="page-footer blue darken-2">
     <div class="container">
@@ -177,7 +80,7 @@
   </footer>
 
 
-  <!--  Modales-->
+
   <div id="modal1" class="modal">
       <form id="formLogin" class="col s12">
           <div class="modal-content">

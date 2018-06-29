@@ -2,7 +2,6 @@
     header('content-type: application/json');
 	include 'conexion.php';
 
-	//permisos de entrada
 	session_start();
 	if (!isset($_SESSION['id'])) { //sin logear
 		$permisos = 0;

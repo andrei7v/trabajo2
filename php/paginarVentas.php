@@ -5,19 +5,15 @@ include_once 'conexion.php';
 	$query = "SELECT * FROM ventas";
 	$result = mysqli_query($conn, $query);
 
-  //total ventas
   $numeroVentas = mysqli_num_rows($result);
 
-  //cada cuanto?
   $numeroLotes = 3;
   
-  //cuantas paginas mostrare
 	$numeroPaginas = ceil($numeroVentas/$numeroLotes);
 
 	$lista = '';
 	$tabla = '';
 
-  //de la <-
 	if ($paginaActual == 1) {
 		$lista = $lista.'<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>';
 	} else {
@@ -25,13 +21,12 @@ include_once 'conexion.php';
 	}
 
 
-  //llenar los numeros
 	for ($i=1; $i <=$numeroPaginas; $i++) { 
 		if ($i == $paginaActual) {
-			# active
+
 			$lista = $lista.'<li class="active"><a href="javascript:paginacion('.$i.');">'.$i.'</a></li>';
 		} else {
-			# waves-effect
+
 			$lista = $lista.'<li class="waves-effect"><a href="javascript:paginacion('.$i.');">'.$i.'</a></li>';
 		}
   }
@@ -50,10 +45,6 @@ include_once 'conexion.php';
 		$limit = $numeroLotes*($paginaActual-1);
   }
   
-
-
-
-
 	$consulta = "SELECT v.ven_id, v.ven_fecha, v.ven_costot, u.usu_name
 			  FROM ventas v
         INNER JOIN usuario u

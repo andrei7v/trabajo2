@@ -13,7 +13,6 @@
 </head>
 
 <body>
-  <!-- navbar okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk-->
   <nav class="blue darken-2" role="navigation">
     <div class="nav-wrapper container-fluid">
       <a href="index.php" class="brand-logo" id="logo">Sistema Ventas</a>    
@@ -23,18 +22,14 @@
     </div>
   </nav>
   
-<!-- 1 botones superiores okokooooooooooooooooooooooooooooooooooooooooooooooooooooo-->
   <div class="row">
     <div class="col s11 offset-s1">
       <br>
-      <!-- btn registrar -->
       <a id="btn-registrar" class="btn-floating btn-large waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="Registrar una compra"><i class="material-icons">add</i></a>
       <div id="div-botones"></div>
     </div>
   </div>
 
-
-<!-- template compras realizadas modd-->
   <template id="template-venta">
     <tr>
       <td data-idventa></td>
@@ -44,7 +39,6 @@
   </template>
 
 
-<!-- donde se muestra el contenido total modddd-->
   <div class="row">
     <div class="col s4 offset-s4">
       <table class="striped responsive-table">
@@ -61,9 +55,6 @@
     </div>
   </div>
 
-
-
-  <!-- Modal registrar nueva compra-->
   <div id="modalCompras" class="modal">
     <form class="col s12" id="formCompras">
         <div class="modal-content">
@@ -125,7 +116,6 @@
   </div>
 
 
-  <!--  Scripts okkkkkkkkkkkkkkkkkk-->
   <script src="js/jquery-3.2.1.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/btnnavbar.js"></script>

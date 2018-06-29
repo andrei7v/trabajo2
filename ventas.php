@@ -8,12 +8,10 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/materialize.css">
   <link rel="stylesheet" href="css/navbar.css">
-  <!-- <link rel="stylesheet" href="css/compras.css"> -->
   <title>Ventas</title>
 </head>
 
 <body>
-  <!-- navbar okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk-->
   <nav class="blue darken-2" role="navigation">
     <div class="nav-wrapper container-fluid">
       <a href="index.php" class="brand-logo" id="logo">Sistema Ventas</a>    
@@ -26,29 +24,10 @@
   <div class="row">
     <div class="col s12 m6 offset-m3">
       <br>
-      <!-- btn registrar -->
-      <!-- <a id="btn-registrar" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Registrar producto"><i class="material-icons">add</i></a> -->
       <a href="php/exportarPDF.php" target="_blank" class="btn-floating btn-large waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="Exportar PDF"><i class="material-icons">picture_as_pdf</i></a>
-      <!-- <br><br> -->
-      <!-- <a id="todos" class="waves-effect waves-light btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Mostrar todos"><i class="material-icons right">cloud</i>Todos</a>
-      <br><br>
-      <div id="div-botones"></div> -->
     </div>
   </div>
 
-<!-- template compras realizadas modd-->
-
-  <!-- <template id="template-venta">
-    <tr>
-      <td data-idventa></td>
-      <td data-usuario class="center-align"></td>
-      <td data-costot class="center-align"></td>
-      <td data-fecha class="center-align"></td>
-    </tr>
-  </template> -->
-
-
-<!-- donde se muestra el contenido total modddd-->
 <h2 class="center-align">Registro de Ventas</h2>
   <div class="row">
     <div class="col s12 m6 offset-m3">
@@ -68,17 +47,12 @@
     </div>
   </div>
 
-
-  
   <div class="row center-align">
     <ul class="pagination" id="paginacion">
     
     </ul>
   </div>
 
-
-
-  <!--  Scripts okkkkkkkkkkkkkkkkkk-->
   <script src="js/jquery-3.2.1.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/btnnavbar.js"></script>

@@ -3,7 +3,6 @@ $(document).ready(function() {
 
   function permisos() {
     $.getJSON("php/permisos.php", function(response) {
-      //1-user - 2-admin
       if (response.permisos == 2) {} else {
         window.location = 'index.php';
         return;
@@ -12,8 +11,7 @@ $(document).ready(function() {
   }
 
 
-  $.getJSON('php/CantidadProductosBar.php', function(response) {
-    console.log(response);
+  $.getJSON('php/cantidadProductosBar.php', function(response) {
     Highcharts.chart('container2', {
       chart: {
         type: 'bar'

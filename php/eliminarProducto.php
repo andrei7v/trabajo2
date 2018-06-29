@@ -1,12 +1,9 @@
 <?php 
-
 	header('Content-type: application/json');
 	
 	include 'conexion.php';
 
-	// Recuperacion de valores
 	$id = $_POST['idD'];
-
     
      $queryV = "SELECT * FROM producto WHERE prod_id=$id";
 	 $resultV = mysqli_query($conn, $queryV);

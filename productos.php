@@ -13,7 +13,6 @@
 </head>
 
 <body>
-  <!-- navbar -->
   <nav class="blue darken-2" role="navigation">
     <div class="nav-wrapper container-fluid">
       <a href="index.php" class="brand-logo" id="logo">Sistema Ventas</a>    
@@ -23,22 +22,16 @@
     </div>
   </nav>
   
-<!-- 4 botones superiores -->
   <div class="row">
     <div class="col s11 offset-s1">
       <br>
-      <!-- btn registrar -->
       <a id="btn-registrar" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Registrar producto"><i class="material-icons">add</i></a>
-      <!-- <a href="php/exportarPDF.php" target="_blank" class="btn-floating btn-large waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="Exportar PDF"><i class="material-icons">picture_as_pdf</i></a>
-      <br><br> -->
       <a id="todos" class="waves-effect waves-light btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Mostrar todos"><i class="material-icons right">cloud</i>Todos</a>
       <br><br>
       <div id="div-botones"></div>
     </div>
   </div>
 
-
-<!-- template productos noooooooooooooooo eliminar-->
   <template id="template-producto">
     <tr>
       <td data-idproducto></td>
@@ -66,16 +59,10 @@
     </tr>
   </template>
 
-
-
-
-
-<!-- template botones categoria -->
   <template id="template-button">
     <a class="waves-effect waves-light btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="" data-button=""><i class="material-icons right">cloud</i><span data-nombre></span></a>
   </template>
 
-<!-- donde se muestra el contenido total -->
   <div class="row">
     <div class="col s10 offset-s1">
       <table class="striped responsive-table">
@@ -106,7 +93,6 @@
     </ul>
   </div>
 
-  <!-- Modal registrar nuevo producto-->
   <div id="modalRegister" class="modal modal-fixed-footer">
     <form class="col s12" id="formRegister" enctype="multipart/form-data">
       <div class="modal-content">
@@ -182,10 +168,6 @@
     </form>
   </div>
 
-
-
-
-<!-- Modal eliminar producto okkk-->
   <div id="modalEliminar" class="modal">
     <form class="col s12" id="formEliminar">
       <div class="modal-content">
@@ -204,7 +186,6 @@
     </form>
   </div>
 
-<!-- modal editar -->
   <div id="modalEdit" class="modal modal-fixed-footer">
     <form id="formEdit" class="col s12" enctype="multipart/form-data">
       <div class="modal-content">
@@ -229,13 +210,11 @@
         <div class="row">
           <div class="input-field col s6">
             <select id="cboCategoriasE" name="cboCategoriasE">
-              <!-- <option value="0">Seleccione una Categoria</option>      -->
             </select>
             <label>Categoria</label>
           </div>
           <div class="input-field col s6">
             <select id="cboSubCategoriasE" name="cboSubCategoriasE">
-              <!-- <option value="0">Seleccione Subcategoria</option>       -->
             </select>
             <label>Subcategoría</label>
           </div>
@@ -243,7 +222,6 @@
         <div class="row">
           <div class="input-field col s6">
             <select id="cboMarcasE" name="cboMarcasE">
-              <!-- <option value="" disabled selected>Seleccione Marca</option>       -->
             </select>
             <label>Marca</label>
           </div>
@@ -278,8 +256,6 @@
     </form>
   </div>
 
-
-  <!-- Modal Structure -->
   <div id="modalImage" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4 id="titulo"></h4>
@@ -293,7 +269,6 @@
     </div>
   </div>
 
-  <!--  Scripts okkkkkkkkkkkkkkkkkk-->
   <script src="js/jquery-3.2.1.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/btnnavbar.js"></script>

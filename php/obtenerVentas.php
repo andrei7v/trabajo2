@@ -13,8 +13,7 @@
 	$productos = [];
 
 	if (mysqli_num_rows($result)==0) {
-		// $msg = "No hay ventas disponibles";
-		// echo json_encode(['error'=>false, 'message'=>$msg]);
+
 		return;
 	} else {
 		while ($fila = mysqli_fetch_array($result)) {
@@ -27,4 +26,4 @@
 
 ?>
 
-<!-- eliminar -->
+<!-- el -->

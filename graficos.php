@@ -8,12 +8,10 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/materialize.css">
   <link rel="stylesheet" href="css/navbar.css">
-  <!-- <link rel="stylesheet" href="css/compras.css"> -->
   <title>Ventas</title>
 </head>
 
 <body>
-  <!-- navbar okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk-->
   <nav class="blue darken-2" role="navigation">
     <div class="nav-wrapper container-fluid">
       <a href="index.php" class="brand-logo" id="logo">Sistema Ventas</a>    
@@ -22,11 +20,6 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-
-
-
-
-
 
 <br>
 
@@ -39,54 +32,6 @@
 	</div>
 
 
-
-
-
-
-
-	<!-- <div class="row">
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">Grafica de cursos y matriculados</div>
-				<div class="panel-body" id="container" ></div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">Grafica de cursos y matriculados</div>
-				<div class="panel-body" id="container2" ></div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">Grafica de cursos y matriculados</div>
-				<div class="panel-body" id="container3" ></div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">Grafica de cursos y matriculados</div>
-				<div class="panel-body" id="container4" ></div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">Grafica de cursos y matriculados</div>
-				<div class="panel-body" id="container5" ></div>
-			</div>
-		</div>
-	</div> -->
-
-
-
-
-
-
-
-
-
-
-  <!--  Scripts okkkkkkkkkkkkkkkkkk-->
   <script src="js/jquery-3.2.1.js"></script>
   <script src="js/materialize.js"></script>
 	<script type="text/javascript" src="js/Highcharts-5.0.9/code/highcharts.js"></script>

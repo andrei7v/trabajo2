@@ -9,7 +9,6 @@
 	$telefono = $_POST['telefono'];
 	$direccion = $_POST['direccion'];
 
-	// Validar que los inputs no esten vacios
 	if ($usuario == "") {
 		echo json_encode(['error'=>true, 'message'=>'Es necesario ingresar el usuario']);
 		return;

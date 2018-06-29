@@ -9,9 +9,7 @@
 			      ON p.prod_marca = m.mar_id
             WHERE p.prod_estado = 1 AND p.prod_stock > 1
             ";
-            
-
-            
+                        
 	$result = mysqli_query($conn, $query);
 
 	$cards = [];
@@ -30,6 +28,5 @@
 	return;
 
 ?>
-
-<!-- eliminar -->
+<!-- el -->
 

@@ -20,7 +20,6 @@
 	$ruta = "imagenes";
 	$ruta = $ruta."/".$nombreImagen;
 
-	// Validar que los inputs no esten vacios
 	if ($nombre == "") {
 		$msg = "Ingrese nombre del producto";
 		echo json_encode(['error'=>true, 'message'=>$msg]);

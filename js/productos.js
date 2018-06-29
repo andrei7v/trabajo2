@@ -1,18 +1,16 @@
-// Normalmente se inicia con esta sentencia
 $(document).ready(function() {
-  // Cuerpo principal
-  $('.modal').modal();
 
+  $('.modal').modal();
   permisos();
   obtenerCategoriasF();
-  $(document).on('click', '[data-button]', obtenerProductosPorSubCategoria); //mostrar producto al pulsar botones
-  $("#todos").on('click', todo); //mostrar todas los productos
+  $(document).on('click', '[data-button]', obtenerProductosPorSubCategoria);
+  $("#todos").on('click', todo);
 
   $formRegister = $("#formRegister");
   $formRegister.on("submit", registrarProducto);
 
-  $modalRegister = $("#modalRegister"); //modal register
-  $("#btn-registrar").on("click", mostrarModalRegistrar); //mostrar modal registrar
+  $modalRegister = $("#modalRegister");
+  $("#btn-registrar").on("click", mostrarModalRegistrar);
 
   $('#cboCategorias').change(obtenerSubCategoriasF);
   $('#cboCategoriasE').change(obtenerSubCategoriasEdit);
@@ -24,7 +22,7 @@ $(document).ready(function() {
     readURL(this);
   });
 
-  $modalEliminar = $("#modalEliminar"); //ok
+  $modalEliminar = $("#modalEliminar");
   $(document).on('click', '[data-delete]', mostrarModalEliminar);
   $formEliminar = $("#formEliminar");
   $formEliminar.on("submit", eliminarProducto);
@@ -53,8 +51,6 @@ function todo() {
   paginacion(1);
 }
 
-
-
 var $modalRegister;
 var $formRegister;
 
@@ -69,7 +65,6 @@ function permisos() {
     }
   });
 }
-
 
 function paginacion(pagina) {
   var url = "php/paginarProductos.php";
@@ -87,12 +82,6 @@ function paginacion(pagina) {
 }
 
 
-
-
-
-
-
-
 function mostrarModalImagen() {
   var imagen = $(this).data('image');
   $.post("php/obtenerInfoImagen.php", { imagen: imagen }, function(response) {
@@ -102,8 +91,6 @@ function mostrarModalImagen() {
   });
   $modalImage.modal('open');
 }
-
-
 
 function registrarProducto(event) {
   event.preventDefault();
@@ -155,14 +142,12 @@ function mostrarModalEditar() {
     $("#cboSubCategoriasE").html('');
     $("#cboMarcasE").html('');
 
-    //solo para mostrar sub cat
     $("#cboSubCategoriasE").append('<option value="0">Seleccione Sub Categoria</option>');
     $.each(response.fsubcat, function(id, value) {
       $("#cboSubCategoriasE").append('<option value="' + id + '">' + value + '</option>');
     });
     $("#cboSubCategoriasE").material_select();
 
-    //solo para mostrar marcas
     $("#cboMarcasE").append('<option value="0">Seleccione Marca</option>');
     $.each(response.fmarcas, function(id, value) {
       $("#cboMarcasE").append('<option value="' + id + '">' + value + '</option>');
@@ -187,10 +172,6 @@ function mostrarModalEditar() {
 
 }
 
-
-
-
-
 function readURL(input) {
   if (input.files && input.files[0]) {
     var lectora = new FileReader();
@@ -202,17 +183,7 @@ function readURL(input) {
   }
 }
 
-
-
-
-
-
-
-
-
 function obtenerCategoriasF() {
-  //obtener categorias para el select
-
   $.getJSON("php/obtenerCategorias.php", function(response) {
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
@@ -220,7 +191,6 @@ function obtenerCategoriasF() {
       for (var i = 0; i < response.message.length; i++) {
         $("#cboCategorias").append($("<option></option>").attr("value", response.message[i].idcategoria).text(response.message[i].nombre));
         $("#cboCategoriasE").append($("<option></option>").attr("value", response.message[i].idcategoria).text(response.message[i].nombre));
-
 
       };
     };
@@ -230,7 +200,6 @@ function obtenerCategoriasF() {
 function obtenerSubCategoriasF() {
   $("#cboSubCategorias").empty();
   var idCategoria = $("#cboCategorias").val();
-  //obtener subcategorias para el select
   $.post("php/obtenerSubCategoriasF.php", { idCategoria: idCategoria }, function(response) {
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
@@ -254,7 +223,6 @@ function obtenerSubCategoriasEdit() {
   $("#cboMarcasE").material_select()
 
   var idCategoria = $("#cboCategoriasE").val();
-  //obtener subcategorias para el select
   $.post("php/obtenerSubCategoriasF.php", { idCategoria: idCategoria }, function(response) {
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
@@ -269,14 +237,9 @@ function obtenerSubCategoriasEdit() {
   });
 }
 
-
-
-
-
 function obtenerMarcasF() {
   $("#cboMarcas").empty();
   var idSubCategoria = $("#cboSubCategorias").val();
-  //obtener marcas para el select
   $.post("php/obtenerMarcasF.php", { idSubCategoria: idSubCategoria }, function(response) {
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
@@ -291,11 +254,9 @@ function obtenerMarcasF() {
   });
 }
 
-
 function obtenerMarcasEdit() {
   $("#cboMarcasE").empty();
   var idSubCategoria = $("#cboSubCategoriasE").val();
-  //obtener marcas para el select
   $.post("php/obtenerMarcasF.php", { idSubCategoria: idSubCategoria }, function(response) {
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
@@ -310,16 +271,9 @@ function obtenerMarcasEdit() {
   });
 }
 
-
-
-
-
-
-//mostar producto al pulsar botones okokoko
 function obtenerProductosPorSubCategoria() {
   $("#table-productos").html("");
   $("#paginacion").html("");
-  ////$("#div-card").html("");                         no usado solo para cards
   var idSubCategoria = $(this).data("button");
   $.ajax({
       url: "php/obtenerProductosPorSubCategoria.php",
@@ -337,23 +291,8 @@ function obtenerProductosPorSubCategoria() {
     });
 }
 
-
-//al cargar la web cargar productos y botones okok eliminar
 function obtenerProductos() {
-  // $("#table-productos").html("");
-  //   $("#div-card").html("");                   no usado solo para cards
   $("#div-botones").html("");
-  // $.getJSON("php/obtenerProductos.php", function(response) {
-
-  //   //template
-  //   if (response.error) {
-  //     Materialize.toast(response.message, 3000, 'rounded');
-  //   } else {
-  //     for (var i = 0; i < response.message.length; i++) {
-  //       renderTemplateProductos(response.message[i].idproducto, response.message[i].nombre, response.message[i].marca, response.message[i].descripcion, response.message[i].precio, response.message[i].stock, response.message[i].imagen, response.message[i].subcategoria, response.message[i].categoria);
-  //     };
-  //   };
-  // });
   $.getJSON("php/obtenerSubCategorias.php", function(response) {
     if (response.error) {
       Materialize.toast(response.message, 3000, 'rounded');
@@ -365,14 +304,10 @@ function obtenerProductos() {
   });
 }
 
-
-//////////////////////////registrar
-
 function mostrarModalRegistrar() {
   $("select").material_select();
   $modalRegister.modal('open');
 }
-
 
 function mostrarModalEliminar() {
   var id = $(this).data("delete");
@@ -387,7 +322,6 @@ function mostrarModalEliminar() {
   });
   $modalEliminar.modal('open');
 }
-
 
 function eliminarProducto(event) {
   event.preventDefault();
@@ -410,10 +344,6 @@ function eliminarProducto(event) {
     });
 }
 
-
-
-
-
 function editarProducto() {
   event.preventDefault();
   var url = 'php/editarProducto.php';
@@ -435,21 +365,6 @@ function editarProducto() {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// renderizar el template productos okok eliminar
 function renderTemplateProductos(id, nombre, marca, descripcion, precio, stock, imagen, subcategoria, categoria) {
   var clone = activeTemplate("#template-producto");
 
@@ -481,49 +396,21 @@ function renderTemplateProductos(id, nombre, marca, descripcion, precio, stock, 
 }
 
 
-// para los carrrdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd no utilizado eliminar
-function renderTemplateCard(id, nombre, descripcion, duracion, anio, categoria) {
-
-  var clone = activeTemplate("#template-card");
-  clone.querySelector("[data-nombre]").innerHTML = nombre;
-  clone.querySelector("[data-descripcion]").innerHTML = descripcion;
-  clone.querySelector("[data-duracion]").innerHTML = duracion;
-  clone.querySelector("[data-categoria]").innerHTML = categoria;
-  clone.querySelector("[data-editar]").setAttribute("data-editar", id);
-  clone.querySelector("[data-eliminar]").setAttribute("data-eliminar", id);
-
-  $("#div-card").append(clone);
-}
-
-//renderizar los botones de subcategorias
 function renderTemplateBoton(id, nombre) {
-
   var clone = activeTemplate("#template-button");
   clone.querySelector("[data-tooltip]").setAttribute("data-tooltip", "Sub categoria " + nombre);
   clone.querySelector("[data-button]").setAttribute("data-button", id);
   clone.querySelector("[data-nombre]").innerHTML = nombre;
-
   $("#div-botones").append(clone);
-
   $(document).ready(function() {
     $('.tooltipped').tooltip();
   });
 }
 
-
-
-//codigo de materialize
 function activeTemplate(id) {
   var template = document.querySelector(id);
   return document.importNode(template.content, true);
 }
-
-
-
-/////////////////////vista previa imagen edicion
-
-
-
 
 function readURL2(input) {
   if (input.files && input.files[0]) {

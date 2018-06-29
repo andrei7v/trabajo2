@@ -4,7 +4,6 @@
 	
 	include 'conexion.php';
 
-	// Recuperacion de valores
 	$idProducto = $_GET["id"];
 	
 	$consulta = "SELECT p.prod_id, p.prod_nombre, m.mar_id, prod_descripcion, p.prod_precio, p.prod_stock, p.prod_url, p.prod_imagen, s.sub_id,c.cat_id

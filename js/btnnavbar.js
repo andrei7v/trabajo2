@@ -1,28 +1,23 @@
 $(document).ready(function() {
-  // sidenav
-  $(".button-collapse").sideNav(); //codigo materialize modal
-  //barra
+  $(".button-collapse").sideNav();
   mostrarBotonesNavbar();
 
+  $('.modal').modal();
+  $('select').material_select();
 
-  //login y register
-  $('.modal').modal(); //codigo materialize modal
-  $('select').material_select(); //codigo materialize form
+  $modalLogin = $('#modal1');
+  $modalRegister = $('#modal2');
 
-  $modalLogin = $('#modal1'); //modal del login
-  $modalRegister = $('#modal2'); //modal del register
+  $(document).on('click', '[data-login]', showLogin);
+  $(document).on('click', '[data-register]', showRegister);
 
-  $(document).on('click', '[data-login]', showLogin); //mostrar modal de login 
-  $(document).on('click', '[data-register]', showRegister); //mostrar modal de registro 
-
-  $('#login').on('click', loginUser); // valida login
-  $('#register').on('click', registerUser); //valida registro
+  $('#login').on('click', loginUser);
+  $('#register').on('click', registerUser);
 
 });
 
-var $modalLogin; //creado para login
-var $modalRegister; //creado para login
-
+var $modalLogin;
+var $modalRegister;
 
 function mostrarBotonesNavbar() {
   $(".hide-on-med-and-down").html('');
@@ -36,21 +31,15 @@ function mostrarBotonesNavbar() {
   });
 }
 
-//////////////////////////////////////////////////////// login y register
-
-//mostrar modal login
 function showLogin() {
   $modalLogin.modal('open');
   Materialize.updateTextFields();
 }
 
-//mostrar register
 function showRegister() {
   $modalRegister.modal('open');
   Materialize.updateTextFields();
 }
-
-/////////////////////////////////////////validadores
 
 function loginUser() {
   event.preventDefault();
@@ -73,7 +62,6 @@ function loginUser() {
     });
 }
 
-//validar register
 function registerUser() {
   event.preventDefault();
   var url = 'php/registrarUsuario.php';

@@ -2,15 +2,6 @@
 	header('content-type: application/json');
 	include 'conexion.php';
 
-	// //permisos de entrada
-	// session_start();
-	// if (!isset($_SESSION['id'])) { //sin logear
-	// 	$permisos = 0;
-	// } else if ($_SESSION['role'] == 2) { //login admin
-	// 	$permisos = 2;
-  //  } else {  //login usuario
-	// 	$permisos = 1;
-  //   }
 session_start();
 $id = $_SESSION['id'];
 	
@@ -23,8 +14,7 @@ $id = $_SESSION['id'];
 	$ventas = [];
 
 	if (mysqli_num_rows($result)==0) {
-		// $msg = "No hay ventas disponibles";
-		// echo json_encode(['error'=>false, 'message'=>$msg]);
+
 		return;
 	} else {
 		while ($fila = mysqli_fetch_array($result)) {
