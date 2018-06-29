@@ -29,8 +29,8 @@
       <br>
       <!-- btn registrar -->
       <a id="btn-registrar" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="Registrar producto"><i class="material-icons">add</i></a>
-      <a href="php/exportarPDF.php" target="_blank" class="btn-floating btn-large waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="Exportar PDF"><i class="material-icons">picture_as_pdf</i></a>
-      <br><br>
+      <!-- <a href="php/exportarPDF.php" target="_blank" class="btn-floating btn-large waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="Exportar PDF"><i class="material-icons">picture_as_pdf</i></a>
+      <br><br> -->
       <a id="todos" class="waves-effect waves-light btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Mostrar todos"><i class="material-icons right">cloud</i>Todos</a>
       <br><br>
       <div id="div-botones"></div>
